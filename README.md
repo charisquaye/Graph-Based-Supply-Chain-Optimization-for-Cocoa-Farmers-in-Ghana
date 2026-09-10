@@ -51,15 +51,15 @@ Sections include evidence overview, network explorer (routes & intermediaries), 
 
 ## License
 
-MIT License – see LICENSE. Copyright (c) 2025 Emmanuel Mensah Quaye.
+MIT License – see LICENSE. Copyright (c) 2026 Emmanuel Mensah Quaye.
 
 ## Citation
 
 If you use this code, the synthetic-data generation procedure, or the analytical pipeline in academic or applied work, please cite the accompanying thesis as:
 
-> Quaye, E. M. (2025). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Thesis]. [Institution].  
+> Quaye, E. M. (2026). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Thesis]. [Institution].  
 > Chapters 3 (Research Methodology) and 4 (Implementation and Results).
 
 Software citation:
 
-> Quaye, E. M. (2025). *Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana* (Version 1.0) [Computer software]. https://github.com/charisquaye/Graph-Based-Supply-Chain-Optimization-for-Cocoa-Farmers-in-Ghana
+> Quaye, E. M. (2026). *Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana* (Version 1.0) [Computer software]. https://github.com/charisquaye/Graph-Based-Supply-Chain-Optimization-for-Cocoa-Farmers-in-Ghana

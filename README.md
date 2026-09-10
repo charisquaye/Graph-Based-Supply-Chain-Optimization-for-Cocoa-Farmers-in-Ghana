@@ -41,10 +41,21 @@ Outputs:
 | Monte Carlo iterations | 5 000 |
 | Central consolidation saving / premium | 35 % / 0.30 GHS kg⁻¹ |
 
+## Prototype decision-support tool
+
+A web-based prototype (CocoaNet) that surfaces network overview, critical intermediaries, collaborative clusters, and an interactive scenario simulator is deployed separately. See the live URL in the repository description / releases once available.
+
 ## License
 
 MIT License – see LICENSE.
 
 ## Citation
 
-Please cite the accompanying thesis chapters when using this code or the synthetic-data generation approach.
+If you use this code, the synthetic-data generation procedure, or the analytical pipeline in academic or applied work, please cite the accompanying thesis as:
+
+> Quaye, C. (2025). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Master’s / Doctoral thesis]. [Institution].  
+> Chapters 3 (Research Methodology) and 4 (Implementation and Results).
+
+A software citation for the repository itself:
+
+> Quaye, C. (2025). *Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana* (Version 1.0) [Computer software]. https://github.com/charisquaye/Graph-Based-Supply-Chain-Optimization-for-Cocoa-Farmers-in-Ghana

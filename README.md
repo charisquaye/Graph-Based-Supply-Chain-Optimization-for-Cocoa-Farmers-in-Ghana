@@ -57,7 +57,7 @@ MIT License – see LICENSE. Copyright (c) 2026 Emmanuel Mensah Quaye.
 
 If you use this code, the synthetic-data generation procedure, or the analytical pipeline in academic or applied work, please cite the accompanying thesis as:
 
-> Quaye, E. M. (2026). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Thesis]. [Institution].  
+> Quaye, E. M. (2026). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Thesis]. University of Ghana, Legon.  
 > Chapters 3 (Research Methodology) and 4 (Implementation and Results).
 
 Software citation:

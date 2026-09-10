@@ -1,0 +1,315 @@
+{
+  "network": {
+    "n_nodes": 957,
+    "n_edges": 1853,
+    "n_farmers": 900,
+    "n_buying": 45,
+    "n_depots": 10,
+    "n_ports": 2,
+    "avg_out_degree_farmer": 1.948,
+    "density": 0.00203,
+    "is_dag": true
+  },
+  "centrality_top": [
+    {
+      "node": "D9",
+      "kind": "depot",
+      "region": "Western North",
+      "betweenness": 0.0004,
+      "degree": 0.0167
+    },
+    {
+      "node": "D7",
+      "kind": "depot",
+      "region": "Ashanti",
+      "betweenness": 0.0002,
+      "degree": 0.0167
+    },
+    {
+      "node": "B20",
+      "kind": "buying",
+      "region": "Central",
+      "betweenness": 0.0002,
+      "degree": 0.0785
+    },
+    {
+      "node": "B4",
+      "kind": "buying",
+      "region": "Ashanti",
+      "betweenness": 0.0002,
+      "degree": 0.0743
+    },
+    {
+      "node": "B26",
+      "kind": "buying",
+      "region": "Eastern",
+      "betweenness": 0.0002,
+      "degree": 0.0795
+    },
+    {
+      "node": "B33",
+      "kind": "buying",
+      "region": "Ashanti",
+      "betweenness": 0.0002,
+      "degree": 0.0596
+    },
+    {
+      "node": "B27",
+      "kind": "buying",
+      "region": "Ashanti",
+      "betweenness": 0.0002,
+      "degree": 0.0732
+    },
+    {
+      "node": "B37",
+      "kind": "buying",
+      "region": "Western North",
+      "betweenness": 0.0002,
+      "degree": 0.0596
+    }
+  ],
+  "centrality_summary": {
+    "mean_betweenness_buying": 9e-05,
+    "mean_betweenness_depot": 0.00014,
+    "max_betweenness": 0.0004
+  },
+  "community": {
+    "n_communities": 10,
+    "modularity": 0.7717,
+    "n_farmer_clusters": 10,
+    "largest_cluster": 153,
+    "median_cluster": 98,
+    "mean_cluster": 90.0
+  },
+  "routing": {
+    "reachable_farmers": 900,
+    "mean_route_cost": 322.22,
+    "median_route_cost": 308.1,
+    "p90_route_cost": 452.25,
+    "min_route_cost": 128.1,
+    "max_route_cost": 648.8
+  },
+  "ml": {
+    "target": "farm-gate price (GHS/kg)",
+    "n_obs": 900,
+    "results": [
+      {
+        "model": "Random Forest (base features)",
+        "n_features": 11,
+        "RMSE": 0.5436,
+        "MAE": 0.4083,
+        "R2": 0.6865
+      },
+      {
+        "model": "Random Forest (base + network)",
+        "n_features": 16,
+        "RMSE": 0.3699,
+        "MAE": 0.2957,
+        "R2": 0.8549
+      },
+      {
+        "model": "XGBoost (base features)",
+        "n_features": 11,
+        "RMSE": 0.5557,
+        "MAE": 0.419,
+        "R2": 0.6724
+      },
+      {
+        "model": "XGBoost (base + network)",
+        "n_features": 16,
+        "RMSE": 0.3914,
+        "MAE": 0.3113,
+        "R2": 0.8375
+      }
+    ]
+  },
+  "feature_importance": [
+    {
+      "feature": "route_cost",
+      "importance": 0.7026
+    },
+    {
+      "feature": "comm_size",
+      "importance": 0.0764
+    },
+    {
+      "feature": "lat",
+      "importance": 0.0569
+    },
+    {
+      "feature": "lon",
+      "importance": 0.0311
+    },
+    {
+      "feature": "degree",
+      "importance": 0.0164
+    },
+    {
+      "feature": "exp_yield",
+      "importance": 0.0159
+    },
+    {
+      "feature": "input_intensity",
+      "importance": 0.0157
+    },
+    {
+      "feature": "reg_Ashanti",
+      "importance": 0.0152
+    },
+    {
+      "feature": "reg_Eastern",
+      "importance": 0.0143
+    },
+    {
+      "feature": "farm_size",
+      "importance": 0.0139
+    },
+    {
+      "feature": "reg_Western North",
+      "importance": 0.0132
+    },
+    {
+      "feature": "reg_Volta",
+      "importance": 0.0099
+    },
+    {
+      "feature": "reg_Western South",
+      "importance": 0.0097
+    },
+    {
+      "feature": "reg_Central",
+      "importance": 0.0089
+    },
+    {
+      "feature": "betweenness",
+      "importance": 0.0
+    },
+    {
+      "feature": "closeness",
+      "importance": 0.0
+    }
+  ],
+  "yield_check": {
+    "R2_base": 0.487,
+    "R2_base_plus_network": 0.4769
+  },
+  "simulation": {
+    "n_iterations": 5000,
+    "mean_gain_pct": 8.87,
+    "median_gain_pct": 8.87,
+    "sd_gain_pct": 0.14,
+    "ci95_low": 8.59,
+    "ci95_high": 9.14,
+    "p10": 8.69,
+    "p90": 9.05,
+    "mean_base_rev": 9153.69,
+    "mean_opt_rev": 9965.87
+  },
+  "sensitivity": [
+    {
+      "consolidation": 0.2,
+      "premium": 0.15,
+      "mean_gain_pct": 4.88
+    },
+    {
+      "consolidation": 0.2,
+      "premium": 0.3,
+      "mean_gain_pct": 6.24
+    },
+    {
+      "consolidation": 0.2,
+      "premium": 0.45,
+      "mean_gain_pct": 7.6
+    },
+    {
+      "consolidation": 0.35,
+      "premium": 0.15,
+      "mean_gain_pct": 7.51
+    },
+    {
+      "consolidation": 0.35,
+      "premium": 0.3,
+      "mean_gain_pct": 8.87
+    },
+    {
+      "consolidation": 0.35,
+      "premium": 0.45,
+      "mean_gain_pct": 10.24
+    },
+    {
+      "consolidation": 0.5,
+      "premium": 0.15,
+      "mean_gain_pct": 10.15
+    },
+    {
+      "consolidation": 0.5,
+      "premium": 0.3,
+      "mean_gain_pct": 11.5
+    },
+    {
+      "consolidation": 0.5,
+      "premium": 0.45,
+      "mean_gain_pct": 12.86
+    }
+  ],
+  "params": {
+    "seed": 20250115,
+    "A": 1.0,
+    "B": 0.8,
+    "C": 0.6,
+    "D": 25.0,
+    "tariff_per_km": 0.9,
+    "cost_per_unit": 0.006,
+    "consolidation_saving": 0.35,
+    "bargain_premium": 0.3
+  },
+  "ml_tuned": {
+    "random_forest": {
+      "best_params": {
+        "max_depth": null,
+        "max_features": 1.0,
+        "min_samples_leaf": 2,
+        "n_estimators": 600
+      },
+      "cv_best_rmse": 0.367,
+      "n_combos": 16,
+      "base": {
+        "RMSE": 0.5706,
+        "MAE": 0.4292,
+        "R2": 0.6664
+      },
+      "net": {
+        "RMSE": 0.39,
+        "MAE": 0.3146,
+        "R2": 0.8442
+      },
+      "n_train": 720,
+      "n_test": 180
+    },
+    "xgboost": {
+      "best_params": {
+        "colsample_bytree": 0.9,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "n_estimators": 400,
+        "subsample": 0.9
+      },
+      "cv_best_rmse": 0.368,
+      "n_combos": 8,
+      "base": {
+        "RMSE": 0.585,
+        "MAE": 0.4384,
+        "R2": 0.6493
+      },
+      "net": {
+        "RMSE": 0.3887,
+        "MAE": 0.3097,
+        "R2": 0.8452
+      }
+    },
+    "yield_control": {
+      "R2_base": 0.4384,
+      "R2_base_plus_network": 0.4363
+    }
+  }
+}

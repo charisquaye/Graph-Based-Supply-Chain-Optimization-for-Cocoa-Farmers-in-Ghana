@@ -41,9 +41,14 @@ Outputs:
 | Monte Carlo iterations | 5 000 |
 | Central consolidation saving / premium | 35 % / 0.30 GHS kg⁻¹ |
 
-## Prototype decision-support tool
+## Prototype decision-support tool (live)
 
-A web-based prototype (CocoaNet) that surfaces network overview, critical intermediaries, collaborative clusters, and an interactive scenario simulator is deployed separately. See the live URL in the repository description / releases once available.
+**CocoaNet** – interactive web prototype:
+
+- **Production URL:** https://cocoanet-dss-charis5.vercel.app  
+- **Deployment URL:** https://cocoanet-8m5j164ve-charis5.vercel.app
+
+Views: network overview · critical intermediaries · collaborative clusters · scenario simulator (adjust consolidation saving and bargaining premium; results from the 5,000-iteration Monte Carlo grid).
 
 ## License
 

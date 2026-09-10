@@ -1,6 +1,6 @@
 # Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana
 
-Reproducible computational pipeline accompanying the thesis chapters on research methodology and results.
+Reproducible computational pipeline accompanying the thesis of **Emmanuel Mensah Quaye** (research methodology and results chapters).
 
 ## Overview
 
@@ -11,7 +11,7 @@ This repository contains the complete analysis pipeline that:
 3. Applies centrality analysis, Dijkstra least-cost routing, and Louvain community detection (resolution = 1.0).
 4. Trains Random Forest and XGBoost models for farm-gate price with and without network-derived features (5-fold CV, held-out test evaluation).
 5. Runs a 5,000-iteration Monte Carlo simulation of baseline vs. consolidated marketing configurations.
-6. Supports a prototype decision-support interface (CocoaNet).
+6. Supports a prototype decision-support interface (Cocoa Network).
 
 All stochastic components are governed by the fixed master seed **20250115**. Re-running the pipeline regenerates the numerical results reported in Chapter 4 exactly.
 
@@ -43,24 +43,24 @@ Outputs:
 
 ## Prototype decision-support tool (live)
 
-**CocoaNet** – interactive web prototype:
+**Cocoa Network** – interactive web prototype aligned with Chapters 3–4:
 
-- **Production URL:** https://cocoanet-dss-charis5.vercel.app  
-- **Deployment URL:** https://cocoanet-8m5j164ve-charis5.vercel.app
+- **Live URL:** https://cocoanet-dss-charis5.vercel.app
 
-Views: network overview · critical intermediaries · collaborative clusters · scenario simulator (adjust consolidation saving and bargaining premium; results from the 5,000-iteration Monte Carlo grid).
+Sections: Evidence overview · Network explorer · Model evidence · Scenario lab · Methods & limits  
+Interactive scenario sliders use the exact Monte Carlo sensitivity grid from the thesis. Export JSON snapshot available in-app.
 
 ## License
 
-MIT License – see LICENSE.
+MIT License – see LICENSE. Copyright (c) 2025 Emmanuel Mensah Quaye.
 
 ## Citation
 
 If you use this code, the synthetic-data generation procedure, or the analytical pipeline in academic or applied work, please cite the accompanying thesis as:
 
-> Quaye, C. (2025). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Master’s / Doctoral thesis]. [Institution].  
+> Quaye, E. M. (2025). *Graph-based supply chain optimization for cocoa farmers in Ghana* [Thesis]. [Institution].  
 > Chapters 3 (Research Methodology) and 4 (Implementation and Results).
 
-A software citation for the repository itself:
+Software citation:
 
-> Quaye, C. (2025). *Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana* (Version 1.0) [Computer software]. https://github.com/charisquaye/Graph-Based-Supply-Chain-Optimization-for-Cocoa-Farmers-in-Ghana
+> Quaye, E. M. (2025). *Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana* (Version 1.0) [Computer software]. https://github.com/charisquaye/Graph-Based-Supply-Chain-Optimization-for-Cocoa-Farmers-in-Ghana

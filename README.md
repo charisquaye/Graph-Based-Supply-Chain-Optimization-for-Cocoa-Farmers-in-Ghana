@@ -43,12 +43,11 @@ Outputs:
 
 ## Prototype decision-support tool (live)
 
-**Cocoa Network** – interactive web prototype aligned with Chapters 3–4:
+**Cocoa Network** – interactive decision-support prototype aligned with Chapters 3–4:
 
-- **Live URL:** https://cocoanet-dss-charis5.vercel.app
+- **Live URL:** https://cocoa-network-decision-support.vercel.app/
 
-Sections: Evidence overview · Network explorer · Model evidence · Scenario lab · Methods & limits  
-Interactive scenario sliders use the exact Monte Carlo sensitivity grid from the thesis. Export JSON snapshot available in-app.
+Sections include evidence overview, network explorer (routes & intermediaries), model evidence, scenario lab, and methods & limits. Results reflect the frozen study run (seed 20250115, 5-fold CV, 5,000 Monte Carlo iterations).
 
 ## License
 

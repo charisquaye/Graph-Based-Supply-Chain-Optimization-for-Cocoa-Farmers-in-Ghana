@@ -1,0 +1,9 @@
+[project]
+name = "cocoa-network-decision-support"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = ["Flask==3.1.2"]
+classifiers = ["Private :: Do Not Upload"]
+
+[tool.vercel]
+entrypoint = "server.app:app"

@@ -492,6 +492,19 @@
     });
   }
 
+  // Only participation other than 65% rescales the executed grid (800 runs per cell).
+  const SCENARIO_LABELS = {
+    "central-executed-scenario": "Central executed scenario",
+    "executed-sensitivity-grid-cell": "Executed sensitivity grid cell (800 runs)",
+    "exploratory-participation-rescaling": "Exploratory participation rescaling",
+  };
+
+  function scenarioInterpretation(central, participation) {
+    if (central) return "central-executed-scenario";
+    if (Number(participation) === 65) return "executed-sensitivity-grid-cell";
+    return "exploratory-participation-rescaling";
+  }
+
   function localScenario(saving, premium, participation) {
     const baseGain = sensitivityValue(saving, premium);
     const gain = baseGain * (participation / 65);
@@ -508,7 +521,7 @@
       central,
       ci95_low: central ? state.data.simulation.ci95_low : null,
       ci95_high: central ? state.data.simulation.ci95_high : null,
-      interpretation: central ? "central-executed-scenario" : "exploratory-participation-rescaling",
+      interpretation: scenarioInterpretation(central, participation),
     };
   }
 
@@ -560,9 +573,7 @@
     if (!state.data) return;
     const scenario = state.scenario;
     byId("scenarioGain").textContent = `${scenario.gain.toFixed(2)}%`;
-    byId("scenarioLabel").textContent = scenario.central
-      ? "Central executed scenario"
-      : "Exploratory participation rescaling";
+    byId("scenarioLabel").textContent = SCENARIO_LABELS[scenarioInterpretation(scenario.central, scenario.participation)];
     byId("baselineRevenue").textContent = formatCurrency(scenario.baseline);
     byId("optimisedRevenue").textContent = formatCurrency(scenario.optimised);
 
@@ -734,7 +745,7 @@
       row.gain.toFixed(2),
       row.baseline.toFixed(2),
       row.optimised.toFixed(2),
-      row.central ? "central executed scenario" : "exploratory participation rescaling",
+      SCENARIO_LABELS[scenarioInterpretation(row.central, row.participation)].toLowerCase(),
     ].join(","));
     downloadFile(
       "cocoa-network-scenario-comparison.csv",

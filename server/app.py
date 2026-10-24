@@ -30,6 +30,19 @@ STATIC_FILES = {
 }
 
 
+def scenario_interpretation(central: bool, participation: int) -> str:
+    """Label a result: the central run, an executed grid cell, or a rescaled one.
+
+    Only participation other than 65% rescales the executed sensitivity grid;
+    every grid cell at 65% is an executed value (800 runs per cell).
+    """
+    if central:
+        return "central-executed-scenario"
+    if participation == 65:
+        return "executed-sensitivity-grid-cell"
+    return "exploratory-participation-rescaling"
+
+
 def scenario_result(saving: int, premium: float, participation: int) -> dict:
     valid = (
         saving in {20, 35, 50}
@@ -61,11 +74,7 @@ def scenario_result(saving: int, premium: float, participation: int) -> dict:
         "ci95_high": RESULTS["simulation"]["ci95_high"] if central else None,
         "ci95_low": RESULTS["simulation"]["ci95_low"] if central else None,
         "gain_pct": gain,
-        "interpretation": (
-            "central-executed-scenario"
-            if central
-            else "exploratory-participation-rescaling"
-        ),
+        "interpretation": scenario_interpretation(central, participation),
         "mean_base_rev": baseline,
         "mean_opt_rev": optimised,
         "participation": participation,

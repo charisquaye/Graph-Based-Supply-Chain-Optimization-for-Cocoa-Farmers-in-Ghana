@@ -78,7 +78,7 @@ def fig_4_1(nodes: pd.DataFrame, out: Path) -> Path:
     ax.set_xlabel("Longitude")
     ax.set_ylabel("Latitude")
     ax.grid(alpha=0.3)
-    ax.legend(loc="lower left", ncol=2, fontsize=8)
+    ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1), borderaxespad=0, fontsize=8)
     return save(fig, out, "fig_4_1.png")
 
 

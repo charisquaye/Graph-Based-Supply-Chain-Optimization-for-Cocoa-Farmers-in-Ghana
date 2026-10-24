@@ -22,11 +22,15 @@ python -m venv .venv
 source .venv/bin/activate   # or .venv\Scripts\activate on Windows
 pip install -r requirements.txt
 python analysis_chapter4_pipeline.py
+python tune_models.py
 ```
+
+`analysis_chapter4_pipeline.py` rebuilds the study and overwrites `results.json` on every run. `tune_models.py` rebuilds the same dataset (master seed 20250115), grid-searches Random Forest and XGBoost on the training split only, and writes `tuned_results.json`. The tuning script does not modify `results.json`; tuned scores stay in that separate file.
 
 Outputs:
 
-- `results.json` – all numeric summaries
+- `results.json` – numeric summaries from the main pipeline (overwritten each time that script runs)
+- `tuned_results.json` – tuned Random Forest and XGBoost scores from `tune_models.py` (Tables 4.3 and 4.4)
 - intermediate pickles / npy files used for figures
 
 ## Key parameters (see also Table 4.1 of the thesis)

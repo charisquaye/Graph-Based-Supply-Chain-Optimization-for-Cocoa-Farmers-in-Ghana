@@ -1,0 +1,87 @@
+{
+ "_meta": {
+  "source": "msc-thesis/site-interpretations/interpretations.json (display fields copied verbatim: title, body, caveat, label)",
+  "lookup": "Views: key = data-view id (overview, network, models, methods). Scenario lab: show 'scenario-how-to-read' as a static panel; if result.central -> 'central-executed-scenario'; else show `grid_s${saving}_p${String(Math.round(premium*100)).padStart(3,'0')}` and, when participation !== 65, also show 'exploratory-participation-rescaling' with its 'label' as a visible badge. grid_s35_p030 is reached only when participation !== 65."
+ },
+ "scenario-how-to-read": {
+  "title": "How to read any scenario setting",
+  "body": "The Scenario lab has three inputs: transport saving (20%, 35% or 50%), bargaining premium (GHS 0.15, 0.30 or 0.45 per kg) and a participation slider (20–90%). Saving and premium pick one cell of the thesis's 3 × 3 sensitivity grid. Each cell is the mean revenue gain from 800 simulation runs, compared with farmers who sell and transport on their own. Only the central case (35%, GHS 0.30, 65%) shows the full 5,000-run result, with its 95% interval and the thesis's revenue figures. Read the grid for direction. In the thesis, gains rise with both saving and premium and stay positive, from 4.88% to 12.86%. Any participation value other than 65% is a rescaling done by the website, not a thesis result.",
+  "caveat": "All figures come from synthetic data calibrated to published totals. They show possible direction and rough size under stated assumptions. They do not forecast what farmers will earn."
+ },
+ "central-executed-scenario": {
+  "title": "Central scenario: 35% transport saving, GHS 0.30/kg premium",
+  "body": "This is the thesis's main scenario, and the one restored by \"Reset to central case\". Farmers in a community who take part share transport, which cuts their transport cost by 35%, and they receive a collective premium of GHS 0.30/kg. Across 5,000 simulation runs, mean revenue rose by 8.87% (95% simulation interval 8.59–9.14%), from about GHS 9,154 to GHS 9,966 per farmer. The gains were uneven. Individual farmers' expected gains ranged from about 4% to 30%, and farmers with the highest route costs to port gained most. In the model, that makes members on the costliest routes the group with the most to gain from shared transport.",
+  "caveat": "The narrow interval comes from the large number of simulation runs. It does not mean the real-world result is certain. The data are synthetic, so 8.87% is a scenario result and not an income forecast."
+ },
+ "grid_s20_p015": {
+  "title": "Most cautious case: 20% saving, GHS 0.15/kg premium",
+  "body": "Both assumptions are at their lowest. Shared transport saves 20% (the central case uses 35%) and the collective premium is GHS 0.15/kg (central: GHS 0.30). The mean revenue gain drops to 4.88%, the lowest cell in the thesis's sensitivity grid. The gain stays positive even under the most cautious assumptions tested, so the thesis's qualitative conclusion, that consolidation and collective marketing improve producer revenue in the model, holds across the whole range examined. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "This cell is based on 800 simulation runs and has no reported uncertainty interval. Values below the tested range were not simulated, and actual savings and premiums are empirical quantities that only observed or experimental data can settle."
+ },
+ "grid_s20_p030": {
+  "title": "Lower saving: 20% saving, GHS 0.30/kg premium",
+  "body": "The premium stays at the central GHS 0.30/kg, but shared transport is assumed to save only 20% instead of 35%. The mean revenue gain falls from 8.87% to 6.24%, which shows how much the result depends on the size of the transport saving. Actual transport savings are an empirical quantity that only observed or experimental data can settle. In the model, the farmers with the costliest routes to port have the most to gain from consolidation. The gain is still positive, as it is in every cell of the grid. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "The synthetic data cannot reproduce actual road conditions or farmer–buyer relationships, so treat this cell as a sensitivity check, not a field estimate."
+ },
+ "grid_s20_p045": {
+  "title": "Low saving, high premium: 20% saving, GHS 0.45/kg premium",
+  "body": "Shared transport is assumed to save 20% (central: 35%), but the collective premium is raised to GHS 0.45/kg (central: GHS 0.30). The mean revenue gain is 7.60%, still below the central 8.87%. In this grid, the higher premium does not fully make up for the smaller transport saving. In the model the gain rises with both the saving and the premium, and the grid lets you weigh one against the other. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "A premium of GHS 0.45/kg is an assumption. Whether buyers would pay it within Ghana's licensed-buyer system is an empirical question that only observed or experimental data can settle."
+ },
+ "grid_s35_p015": {
+  "title": "Lower premium: 35% saving, GHS 0.15/kg premium",
+  "body": "The transport saving stays at the central 35%, but the collective premium is halved to GHS 0.15/kg. The mean revenue gain falls from 8.87% to 7.51%. Even with the lower premium, the modelled gain stays positive. The thesis treats the premium as modest and paid only to farmers who take part. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "This cell is based on 800 simulation runs and has no uncertainty interval. The network is synthetic and no synthetic node is claimed to match a real one, so the size of the gain may not carry over to the field."
+ },
+ "grid_s35_p045": {
+  "title": "Higher premium: 35% saving, GHS 0.45/kg premium",
+  "body": "The transport saving stays at the central 35%, and the collective premium rises to GHS 0.45/kg. The mean revenue gain rises from 8.87% to 10.24%. This shows the extra modelled benefit if collective selling secures a larger price premium on top of shared transport. The thesis notes that buyers' willingness to pay such premiums is an empirical question that only observed or experimental data can settle. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "A higher premium is an assumption, not an observed price. Any arrangement would have to work within Ghana's licensed-buyer framework."
+ },
+ "grid_s50_p015": {
+  "title": "High saving, low premium: 50% saving, GHS 0.15/kg premium",
+  "body": "Shared transport is assumed to save 50% (central: 35%), while the collective premium is only GHS 0.15/kg (central: GHS 0.30). The mean revenue gain is 10.15%, close to the 10.24% from a 35% saving with a GHS 0.45 premium. In the grid, a larger transport saving with a small premium gives about the same gain as the central saving with a large premium. In the thesis, farmers in remote or poorly connected locations face the highest route costs and have the most to gain from consolidation. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "A 50% saving is the most optimistic transport assumption in the grid. Actual transport savings are an empirical quantity that only observed or experimental data can settle, so this is a scenario value from synthetic data."
+ },
+ "grid_s50_p030": {
+  "title": "Higher saving: 50% saving, GHS 0.30/kg premium",
+  "body": "The premium stays at the central GHS 0.30/kg, and shared transport is assumed to save 50% instead of 35%. The mean revenue gain rises from 8.87% to 11.50%. This shows what a larger consolidation saving would add in the model. The thesis links the scope for such savings to the wide spread of route costs, with the upper-tail farmers standing to gain most. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "This cell is based on 800 simulation runs and has no uncertainty interval. Whether a 50% saving is achievable would have to be tested with observed transport costs."
+ },
+ "grid_s50_p045": {
+  "title": "Most favourable case: 50% saving, GHS 0.45/kg premium",
+  "body": "Both assumptions are at their highest: a 50% transport saving and a GHS 0.45/kg collective premium. The mean revenue gain is 12.86%, the top of the thesis's sensitivity grid. Together with the most cautious cell (4.88%), it marks the range within which the modelled gain falls across all the assumptions tested. Use it as the top of the tested range for discussion, not as a target. The thesis's confidence is in the direction of the effect rather than its exact size. The revenue figure shown for this cell is the website's own arithmetic, not a separate thesis result.",
+  "caveat": "Both inputs are the most favourable assumptions tested, applied to synthetic data. The thesis makes no claim that farmers currently forgo even the central 8.87% of revenue."
+ },
+ "grid_s35_p030": {
+  "title": "Central settings (35%, GHS 0.30/kg) with participation moved from 65%",
+  "body": "Saving and premium are at the thesis's central values: a 35% transport saving and a GHS 0.30/kg collective premium. In the thesis, these settings give a mean revenue gain of 8.87% (95% simulation interval 8.59–9.14% over 5,000 runs). Because the participation slider is not at 65%, the website rescales that gain by participation ÷ 65, shows the baseline revenue increased by the rescaled percentage as the optimised revenue, and gives no interval. These on-screen figures are not thesis results; see the participation note.",
+  "caveat": "The data are synthetic, so even the central 8.87% is a scenario result and not an income forecast."
+ },
+ "exploratory-participation-rescaling": {
+  "title": "Exploratory: not reported in the thesis (participation slider)",
+  "body": "Exploratory: not reported in the thesis. Moving the participation slider away from 65% multiplies the selected grid cell's gain by the slider value divided by 65. At 90% the gain is scaled up by 90/65. At 20% it shrinks to 20/65 of the cell value. The optimised revenue shown is the baseline revenue increased by this rescaled percentage, and no uncertainty interval is given. This calculation is part of the website, not the thesis. In the thesis simulation, participation is the chance that each farmer joins. It rises with the size of the farmer's community and is capped at 90%. Across the modelled farmers it ranged from 0.69 to 0.90.",
+  "caveat": "The thesis did not run or report rescaled results, so use these numbers only to support discussion. Real participation rates are an open question that needs observed or experimental data.",
+  "label": "Exploratory: not reported in the thesis"
+ },
+ "overview": {
+  "title": "How to read the Overview",
+  "body": "The Overview gives the headline results of one frozen, reproducible study run (seed 20250115): a synthetic network of 957 nodes and 1,853 directed links, ten Louvain communities (modularity 0.7717), and the central scenario's mean revenue gain of 8.87%. With network features, the Random Forest price model reaches an R² of 0.844 (held-out test set); the untuned pipeline configuration scores 0.855 (5-fold cross-validation). Start here to see the scale and scope of the study, then open the other views to check where each number comes from.",
+  "caveat": "These are results from synthetic data calibrated to published totals. They are not measurements of Ghana's cocoa sector."
+ },
+ "network": {
+  "title": "How to read the Network explorer",
+  "body": "This view shows how the synthetic network is built: each farmer links to about 1.95 buying points on average, and least-cost route costs to port range from 128.1 to 648.8 composite units (median 308.10, 90th percentile 452.25). The ranking orders depots and buying points by weighted betweenness, with depot D9 in Western North at the top; read a high rank as a reason to look more closely at that point and plan for disruption there, not as evidence about any real facility.",
+  "caveat": "Synthetic nodes are not claimed to match any real depot or buying point."
+ },
+ "models": {
+  "title": "How to read Model evidence",
+  "body": "This view compares models that predict farm-gate price with and without network features: route cost, community size, degree, betweenness and closeness. Adding these features cut prediction error by about a third and raised the Random Forest R² to 0.844 (held-out test set); the bars on this page show the untuned pipeline's 0.855 (5-fold cross-validation). Route cost was the strongest predictor and community size came next, while a yield check showed essentially no gain from the same features. Because the synthetic prices were built to depend on network position, this shows the method can recover a planted signal, not that network position sets real prices.",
+  "caveat": "Values on this page are five-fold cross-validated results of the fixed pipeline settings (Appendix C). The thesis's main held-out test results (Table 4.4) differ slightly."
+ },
+ "methods": {
+  "title": "How to read Methods & limits",
+  "body": "This view lists the settings behind every result: seed 20250115, edge-weight coefficients 1.0, 0.8, 0.6 and 25.0, Louvain resolution 1.0, the fixed model settings, and the Monte Carlo summary (5,000 runs, 8.87% mean gain, 95% interval 8.59–9.14%, grid span 4.88–12.86%). Use it to confirm that a number on another page comes from the frozen run. The thesis's limits apply throughout: synthetic data, a network that does not change within a scenario, adoption modelled only as a probability of taking part, and a prototype not yet tested with users.",
+  "caveat": "Before any operational use, the thesis calls for a pilot with observed COCOBOD loading data and field evaluation with extension officers and cooperatives."
+ }
+}

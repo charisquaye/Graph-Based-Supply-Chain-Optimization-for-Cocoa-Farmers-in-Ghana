@@ -573,6 +573,7 @@
       byId("scenarioInterval").textContent = "Not recalculated";
       byId("intervalLabel").textContent = "rerun simulation for uncertainty";
     }
+    renderScenarioInterpretation();
   }
 
   function drawDistribution() {
@@ -859,12 +860,230 @@
     });
   }
 
+  // ---- interpretation panels (text loaded verbatim from interpretations.json) ----
+  // Wording is never altered: bodies are only split at sentence boundaries, and every
+  // stat chip value is checked to appear verbatim in the entry's body before it is shown.
+  const interp = { entries: null, open: new Set() };
+  const SVG_NS = "http://www.w3.org/2000/svg";
+
+  const INTERP_CHIPS = {
+    overview: [[["957"], "nodes"], [["1,853"], "directed links"], [["0.844"], "R² · held-out test"], [["8.87%"], "mean revenue gain"]],
+    network: [[["1.95"], "buying points per farmer"], [["128.1", "648.8"], "route-cost range"], [["452.25"], "90th percentile"]],
+    models: [[["0.844"], "R² · held-out test"], [["0.855"], "R² · 5-fold CV"]],
+    methods: [[["5,000"], "simulation runs"], [["8.87%"], "mean gain"], [["8.59–9.14%"], "95% interval"]],
+    "scenario-how-to-read": [[["4.88%", "12.86%"], "grid range"], [["5,000"], "runs · central case"]],
+    "central-executed-scenario": [[["8.87%"], "mean revenue gain"], [["8.59–9.14%"], "95% simulation interval"], [["GHS 9,154", "9,966"], "revenue per farmer", "→"]],
+    grid_s35_p030: [[["8.87%"], "thesis mean gain"], [["8.59–9.14%"], "95% simulation interval"]],
+    "exploratory-participation-rescaling": [[["90/65"], "scale at 90%"], [["20/65"], "scale at 20%"], [["0.69", "0.90"], "modelled participation"]],
+  };
+
+  function chipsFor(key, body) {
+    let spec = INTERP_CHIPS[key];
+    const grid = /^grid_s(\d+)_p(\d+)$/.exec(key);
+    if (!spec && grid && state.data) {
+      const value = sensitivityValue(Number(grid[1]), Number(grid[2]) / 100);
+      spec = value == null ? [] : [[[`${value.toFixed(2)}%`], "mean revenue gain · this cell"], [["8.87%"], "central case"]];
+    }
+    return (spec || [])
+      .filter(([parts]) => parts.every((part) => body.includes(part)))
+      .map(([parts, label, joiner]) => ({ value: parts.join(joiner || "–"), label }));
+  }
+
+  function splitSentences(text) {
+    return text.split(/(?<=[.!?])\s+(?=[A-Z"“])/);
+  }
+
+  const KEY_NUMBER = /(GHS\s)?\d[\d,]*(?:\.\d+)?(?:–\d[\d,]*(?:\.\d+)?)?%?/g;
+
+  function appendWithNumbers(element, text) {
+    let last = 0;
+    for (const match of text.matchAll(KEY_NUMBER)) {
+      const token = match[0];
+      const key = /[.,%]/.test(token) || token.startsWith("GHS") || token.length >= 3;
+      if (!key) continue;
+      if (match.index > last) element.append(text.slice(last, match.index));
+      const strong = document.createElement("strong");
+      strong.textContent = token;
+      element.append(strong);
+      last = match.index + token.length;
+    }
+    if (last < text.length) element.append(text.slice(last));
+  }
+
+  function paragraph(text, className) {
+    const p = document.createElement("p");
+    if (className) p.className = className;
+    appendWithNumbers(p, text);
+    return p;
+  }
+
+  function svgIcon(className, paths) {
+    const svg = document.createElementNS(SVG_NS, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    svg.setAttribute("class", className);
+    paths.forEach(([tag, attrs]) => {
+      const node = document.createElementNS(SVG_NS, tag);
+      Object.entries(attrs).forEach(([name, value]) => node.setAttribute(name, value));
+      svg.append(node);
+    });
+    return svg;
+  }
+
+  function setPanelOpen(section, open) {
+    const toggle = section.querySelector(".interp-toggle");
+    const body = section.querySelector(".interp-body");
+    toggle.setAttribute("aria-expanded", String(open));
+    body.hidden = !open;
+    section.classList.toggle("is-open", open);
+    if (open) interp.open.add(section.dataset.interpKey);
+    else interp.open.delete(section.dataset.interpKey);
+  }
+
+  function interpretationPanel(key, { exclusive = false } = {}) {
+    const entry = interp.entries && interp.entries[key];
+    if (!entry) return null;
+    const bodyId = `interp-body-${key}`;
+
+    const section = document.createElement("section");
+    section.className = "interp-panel";
+    section.dataset.interpKey = key;
+
+    const heading = document.createElement("h3");
+    heading.className = "interp-heading";
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "interp-toggle";
+    toggle.setAttribute("aria-controls", bodyId);
+    const head = document.createElement("span");
+    head.className = "interp-head-text";
+    const eyebrow = document.createElement("span");
+    eyebrow.className = "interp-eyebrow";
+    eyebrow.textContent = "Interpretation";
+    head.append(eyebrow);
+    if (entry.label) {
+      const badge = document.createElement("span");
+      badge.className = "interp-badge";
+      badge.textContent = entry.label;
+      head.append(badge);
+    }
+    const title = document.createElement("span");
+    title.className = "interp-title";
+    title.textContent = entry.title;
+    head.append(title);
+    toggle.append(head, svgIcon("interp-chevron", [["path", { d: "m6 9 6 6 6-6" }]]));
+    heading.append(toggle);
+    section.append(heading);
+
+    const body = document.createElement("div");
+    body.className = "interp-body";
+    body.id = bodyId;
+    body.setAttribute("role", "region");
+    body.setAttribute("aria-label", entry.title);
+
+    const sentences = splitSentences(entry.body);
+    const chips = chipsFor(key, entry.body);
+    const lead = document.createElement("div");
+    lead.className = "interp-lead";
+    lead.append(paragraph(sentences[0], "interp-takeaway"));
+    if (chips.length) {
+      const list = document.createElement("dl");
+      list.className = "interp-chips";
+      chips.forEach((chip) => {
+        const item = document.createElement("div");
+        const dt = document.createElement("dt");
+        dt.textContent = chip.label;
+        const dd = document.createElement("dd");
+        dd.textContent = chip.value;
+        item.append(dd, dt);
+        list.append(item);
+      });
+      lead.append(list);
+    }
+
+    const detail = document.createElement("div");
+    detail.className = "interp-detail";
+    const rest = sentences.slice(1);
+    for (let i = 0; i < rest.length; i += 2) detail.append(paragraph(rest.slice(i, i + 2).join(" ")));
+    if (entry.caveat) {
+      const note = document.createElement("div");
+      note.className = "interp-caveat";
+      note.append(svgIcon("interp-info", [
+        ["circle", { cx: "12", cy: "12", r: "10" }],
+        ["path", { d: "M12 16v-4" }],
+        ["path", { d: "M12 8h.01" }],
+      ]));
+      const noteText = document.createElement("div");
+      const label = document.createElement("span");
+      label.className = "interp-caveat-label";
+      label.textContent = "Caveat";
+      noteText.append(label, paragraph(entry.caveat));
+      note.append(noteText);
+      detail.append(note);
+    }
+    body.classList.toggle("has-chips", chips.length > 0);
+    body.append(lead, detail);
+    section.append(body);
+
+    setPanelOpen(section, interp.open.has(key));
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      if (open && exclusive) {
+        $$(".interp-panel", section.parentElement).forEach((other) => {
+          if (other !== section) setPanelOpen(other, false);
+        });
+      }
+      setPanelOpen(section, open);
+    });
+    return section;
+  }
+
+  function fillInterpretationSlot(view, keys, options) {
+    const slot = byId(`interp-${view}`);
+    if (!slot || !interp.entries) return;
+    slot.replaceChildren(...keys.map((key) => interpretationPanel(key, options)).filter(Boolean));
+  }
+
+  function scenarioCellKey() {
+    const scenario = state.scenario;
+    if (scenario.central) return "central-executed-scenario";
+    return `grid_s${scenario.saving}_p${String(Math.round(scenario.premium * 100)).padStart(3, "0")}`;
+  }
+
+  function scenarioInterpretationKeys() {
+    const keys = ["scenario-how-to-read", scenarioCellKey()];
+    if (state.scenario.participation !== 65) keys.push("exploratory-participation-rescaling");
+    return keys;
+  }
+
+  function renderScenarioInterpretation() {
+    // One panel open at a time: the selected cell opens, the others start collapsed.
+    const keys = scenarioInterpretationKeys();
+    keys.forEach((key) => interp.open.delete(key));
+    interp.open.add(scenarioCellKey());
+    fillInterpretationSlot("scenario", keys, { exclusive: true });
+  }
+
+  async function loadInterpretations() {
+    try {
+      const response = await fetch("/interpretations.json", { headers: { Accept: "application/json" } });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      interp.entries = await response.json();
+    } catch (error) {
+      console.warn("Interpretations unavailable", error);
+      return;
+    }
+    ["overview", "network", "models", "methods"].forEach((view) => fillInterpretationSlot(view, [view]));
+    renderScenarioInterpretation();
+  }
+
   async function initialise() {
     bindEvents();
     renderScenarioComparisons();
     const initialView = window.location.hash.slice(1);
     navigate(titles[initialView] ? initialView : "overview", { fromHash: true, focus: false });
-    await loadData();
+    await Promise.all([loadData(), loadInterpretations()]);
   }
 
   initialise();

@@ -24,6 +24,7 @@ app.json.sort_keys = True
 STATIC_FILES = {
     "app.js": SOURCE,
     "styles.css": SOURCE,
+    "interpretations.json": SOURCE,
     "favicon.svg": PUBLIC,
     "og.png": PUBLIC,
 }

@@ -9,7 +9,7 @@ This repository contains the complete analysis pipeline that:
 1. Generates a synthetic, calibrated representation of Ghana’s cocoa supply chain (900 farmers, 45 buying points, 10 depots, 2 ports).
 2. Builds a weighted, multi-relational directed graph.
 3. Applies centrality analysis, Dijkstra least-cost routing, and Louvain community detection (resolution = 1.0).
-4. Trains Random Forest and XGBoost models for farm-gate price with and without network-derived features (5-fold CV, held-out test evaluation).
+4. Trains Random Forest and XGBoost models for farm-gate price with and without network-derived features (5-fold cross-validated R² in `results.json`; the tuned 720/180 held-out test evaluation is in `tune_models.py` / `tuned_results.json`).
 5. Runs a 5,000-iteration Monte Carlo simulation of baseline vs. consolidated marketing configurations.
 6. Supports a prototype decision-support interface (Cocoa Network).
 

@@ -157,7 +157,7 @@
     byId("overviewEdges").textContent = data.network.n_edges.toLocaleString("en-GH");
     byId("overviewCommunities").textContent = data.community.n_communities;
     byId("overviewModularity").textContent = data.community.modularity.toFixed(4);
-    byId("overviewR2").textContent = data.ml.results[1].R2.toFixed(4);
+    byId("overviewR2").textContent = data.ml_tuned.random_forest.net.R2.toFixed(3);
     byId("overviewGain").textContent = `${data.simulation.mean_gain_pct.toFixed(2)}%`;
 
     byId("meanOutDegree").textContent = data.network.avg_out_degree_farmer.toFixed(3);

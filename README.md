@@ -55,7 +55,7 @@ Sections include evidence overview, network explorer (routes & intermediaries), 
 
 The read-only Flask service is part of this repository root. `server/app.py` defines `app`. Vercel loads it through `tool.vercel.entrypoint = "server.app:app"` in `pyproject.toml`, and `api/index.py` re-exports that same object. The Vercel function installs the `pyproject.toml` dependency (`Flask==3.1.2`). `requirements.txt` remains the local analysis environment and also includes Flask. The service reads the frozen snapshot in `src/results.json`. The interface is `src/index.html`, `src/app.js`, and `src/styles.css`. `public/` holds the icon and social image. Pipeline outputs stay in `results.json` and `tuned_results.json`.
 
-**Export PDF** in the top bar calls `window.print()`. The print stylesheet shows every section, including Methods, so the browser’s Save as PDF keeps the figures already on the page. It does not rerun the pipeline.
+**Export PDF** in the top bar calls `window.print()`. The print stylesheet lays the five views out on A4, one page each, and lets Methods continue onto a second page. It does not rerun the pipeline.
 
 For the `charis5` Vercel project `cocoa-network-decision-support`, keep **Root Directory** as the repository root and keep the Framework Preset as Flask. The production alias currently serves an earlier upload of this same layout (`server/app.py` and `api/index.py`). Git deployments of `main` looked for a Flask entrypoint in the thesis tree and failed with `FLASK_ENTRYPOINT_NOT_FOUND` until this app was added.
 

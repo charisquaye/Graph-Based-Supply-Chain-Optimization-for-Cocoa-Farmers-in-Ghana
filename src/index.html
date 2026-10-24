@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#102a43">
+  <meta name="theme-color" content="#1F3A2E">
   <meta name="description" content="Thesis-backed network, predictive-model and revenue-scenario evidence for Ghana's cocoa supply chain.">
   <meta property="og:title" content="Cocoa Network Decision Support">
   <meta property="og:description" content="Explore graph structure, model evidence and collaborative transport scenarios from a reproducible synthetic study.">
@@ -12,45 +12,27 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>Cocoa Network Decision Support</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="app-shell">
-    <div class="mobile-overlay" id="mobileOverlay" hidden></div>
-    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true">CN</span>
+<header class="topbar"><div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">  <rect width="48" height="48" rx="12" fill="#1F3A2E"/> <!-- cocoa pod silhouette --> <path d="M24 6c7.5 4.2 11 11 11 18s-3.5 13.8-11 18c-7.5-4.2-11-11-11-18S16.5 10.2 24 6z" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linejoin="round"/> <!-- ridge as directed network: farmer -> buying point -> depot -> port --> <path d="M18.5 16 24 22.5 29.5 16M24 22.5v9.5" fill="none" stroke="#F3EFE6" stroke-width="1.8" stroke-linecap="round"/> <circle cx="18.5" cy="16" r="2.2" fill="#F3EFE6"/> <circle cx="29.5" cy="16" r="2.2" fill="#F3EFE6"/> <circle cx="24" cy="22.5" r="2.6" fill="#D9A441"/> <circle cx="24" cy="34" r="3" fill="#F3EFE6"/> </svg> </span>
         <span>
           <strong>Cocoa Network</strong>
           <small>Decision support</small>
         </span>
-      </div>
-
-      <nav class="primary-nav" aria-label="Prototype views">
-        <button class="nav-item active" type="button" data-view="overview" aria-current="page">
-          <span class="nav-symbol" aria-hidden="true">⌂</span>
-          <span><strong>Overview</strong><small>Study snapshot</small></span>
-        </button>
-        <button class="nav-item" type="button" data-view="network">
-          <span class="nav-symbol" aria-hidden="true">◎</span>
-          <span><strong>Network explorer</strong><small>Routes &amp; intermediaries</small></span>
-        </button>
-        <button class="nav-item" type="button" data-view="models">
-          <span class="nav-symbol" aria-hidden="true">▥</span>
-          <span><strong>Model evidence</strong><small>Performance &amp; features</small></span>
-        </button>
-        <button class="nav-item" type="button" data-view="scenario">
-          <span class="nav-symbol" aria-hidden="true">◇</span>
-          <span><strong>Scenario lab</strong><small>Revenue assumptions</small></span>
-        </button>
-        <button class="nav-item" type="button" data-view="methods">
-          <span class="nav-symbol" aria-hidden="true">≡</span>
-          <span><strong>Methods &amp; limits</strong><small>Audit the evidence</small></span>
-        </button>
-      </nav>
-
-      <div class="run-card">
+      </div><button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg></button><div class="topbar-title">
+          
+          <div>
+            <span class="breadcrumb">Ghana cocoa supply-chain analytics</span>
+            <h1 id="viewTitle">Evidence overview</h1>
+          </div>
+        </div><span class="topbar-spacer"></span><div class="run-card">
         <div class="run-card-head">
           <span class="status-dot" aria-hidden="true"></span>
           <span>Frozen study run</span>
@@ -60,28 +42,47 @@
           <div><dt>Cross-validation</dt><dd>5 folds</dd></div>
           <div><dt>Simulation</dt><dd>5,000 runs</dd></div>
         </dl>
-        <button class="text-button inverse" type="button" id="viewMethodsButton">View methodology →</button>
-      </div>
+        
+      </div><div class="topbar-actions">
+          
+          <button class="button secondary compact" type="button" id="helpButton"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-info" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg><span>Guide</span></button>
+          <button class="button primary compact" type="button" id="exportResultsButton"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-download" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg><span>Export results</span></button>
+        <button class="button export-pdf compact" type="button" id="exportPdfButton" aria-label="Export PDF"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-file-down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 18v-6" /> <path d="m9 15 3 3 3-3" /> </svg><span>Export PDF</span></button></div></header>
+    <div class="mobile-overlay" id="mobileOverlay" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      
+
+      <nav class="primary-nav" aria-label="Prototype views">
+        <button class="nav-item active" type="button" data-view="overview" aria-current="page">
+          <span class="nav-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-house" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /> <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /> </svg></span>
+          <span><strong>Overview</strong><small>Study snapshot</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="network">
+          <span class="nav-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-network" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect x="16" y="16" width="6" height="6" rx="1" /> <rect x="2" y="16" width="6" height="6" rx="1" /> <rect x="9" y="2" width="6" height="6" rx="1" /> <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /> <path d="M12 12V8" /> </svg></span>
+          <span><strong>Network explorer</strong><small>Routes &amp; intermediaries</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="models">
+          <span class="nav-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-chart-column" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /> </svg></span>
+          <span><strong>Model evidence</strong><small>Performance &amp; features</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="scenario">
+          <span class="nav-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-flask-conical" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" /> <path d="M6.453 15h11.094" /> <path d="M8.5 2h7" /> </svg></span>
+          <span><strong>Scenario lab</strong><small>Revenue assumptions</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="methods">
+          <span class="nav-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-book-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 5v16" /> <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /> </svg></span>
+          <span><strong>Methods &amp; limits</strong><small>Audit the evidence</small></span>
+        </button>
+      </nav>
+<div class="sidebar-foot"><span class="data-status" id="dataStatus"><span class="status-dot" aria-hidden="true"></span>Loading study data…</span><button class="text-button inverse" type="button" id="viewMethodsButton">View methodology →</button></div>
+
+      
     </aside>
 
     <div class="workspace">
-      <header class="topbar">
-        <div class="topbar-title">
-          <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
-          <div>
-            <span class="breadcrumb">Ghana cocoa supply-chain analytics</span>
-            <h1 id="viewTitle">Evidence overview</h1>
-          </div>
-        </div>
-        <div class="topbar-actions">
-          <span class="data-status" id="dataStatus"><span class="status-dot" aria-hidden="true"></span>Loading study data…</span>
-          <button class="button secondary compact" type="button" id="helpButton">Guide</button>
-          <button class="button primary compact" type="button" id="exportResultsButton">Export results</button>
-          <button class="button secondary compact" type="button" id="exportPdfButton">Export PDF</button>
-        </div>
-      </header>
+      
 
-      <main id="main-content" tabindex="-1">
+      <main id="main-content" tabindex="-1"><div class="print-only print-head"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">  <rect width="48" height="48" rx="12" fill="#1F3A2E"/> <!-- cocoa pod silhouette --> <path d="M24 6c7.5 4.2 11 11 11 18s-3.5 13.8-11 18c-7.5-4.2-11-11-11-18S16.5 10.2 24 6z" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linejoin="round"/> <!-- ridge as directed network: farmer -> buying point -> depot -> port --> <path d="M18.5 16 24 22.5 29.5 16M24 22.5v9.5" fill="none" stroke="#F3EFE6" stroke-width="1.8" stroke-linecap="round"/> <circle cx="18.5" cy="16" r="2.2" fill="#F3EFE6"/> <circle cx="29.5" cy="16" r="2.2" fill="#F3EFE6"/> <circle cx="24" cy="22.5" r="2.6" fill="#D9A441"/> <circle cx="24" cy="34" r="3" fill="#F3EFE6"/> </svg> <div><strong>Cocoa Network Decision Support</strong><span>Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana</span></div></div>
         <div class="view active" id="overview" data-title="Evidence overview">
           <section class="hero">
             <div class="hero-copy">
@@ -92,7 +93,7 @@
                 <button class="button light" type="button" data-go="scenario">Explore a scenario</button>
                 <button class="button ghost-light" type="button" data-go="network">Inspect the network</button>
               </div>
-              <p class="hero-note"><span aria-hidden="true">ⓘ</span> Synthetic study data · indicative results · not operational advice</p>
+              <p class="hero-note"><span aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-info" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg></span> Synthetic study data · indicative results · not operational advice</p>
             </div>
             <div class="hero-visual" aria-label="Three-stage decision-support workflow">
               <div class="workflow-node">
@@ -100,13 +101,13 @@
                 <strong>Map</strong>
                 <small>Identify access constraints</small>
               </div>
-              <span class="workflow-arrow" aria-hidden="true">→</span>
+              <span class="workflow-arrow" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
               <div class="workflow-node">
                 <span class="workflow-number">02</span>
                 <strong>Model</strong>
                 <small>Measure added information</small>
               </div>
-              <span class="workflow-arrow" aria-hidden="true">→</span>
+              <span class="workflow-arrow" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
               <div class="workflow-node accent">
                 <span class="workflow-number">03</span>
                 <strong>Explore</strong>
@@ -125,25 +126,25 @@
             </div>
             <div class="metric-grid">
               <article class="metric-card">
-                <span class="metric-icon blue" aria-hidden="true">◎</span>
+                <span class="metric-icon blue" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-share-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /> </svg></span>
                 <span class="metric-label">Network scale</span>
                 <strong class="metric-value" id="overviewNodes">957</strong>
                 <span class="metric-meta">nodes · <b id="overviewEdges">1,853</b> directed edges</span>
               </article>
               <article class="metric-card">
-                <span class="metric-icon teal" aria-hidden="true">◉</span>
+                <span class="metric-icon teal" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-boxes" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" /> <path d="m7 16.5-4.74-2.85" /> <path d="m7 16.5 5-3" /> <path d="M7 16.5v5.17" /> <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" /> <path d="m17 16.5-5-3" /> <path d="m17 16.5 4.74-2.85" /> <path d="M17 16.5v5.17" /> <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" /> <path d="M12 8 7.26 5.15" /> <path d="m12 8 4.74-2.85" /> <path d="M12 13.5V8" /> </svg></span>
                 <span class="metric-label">Community structure</span>
                 <strong class="metric-value" id="overviewCommunities">10</strong>
                 <span class="metric-meta">Louvain groups · modularity <b id="overviewModularity">0.7717</b></span>
               </article>
               <article class="metric-card">
-                <span class="metric-icon gold" aria-hidden="true">↗</span>
+                <span class="metric-icon gold" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-trending-up" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /> </svg></span>
                 <span class="metric-label">Best predictive fit</span>
                 <strong class="metric-value" id="overviewR2">0.8549</strong>
                 <span class="metric-meta">Random Forest R² · network features</span>
               </article>
               <article class="metric-card">
-                <span class="metric-icon green" aria-hidden="true">₵</span>
+                <span class="metric-icon green" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-coins" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M13.744 17.736a6 6 0 1 1-7.48-7.48" /> <path d="M15 6h1v4" /> <path d="m6.134 14.768.866-.5 2 3.464" /> <circle cx="16" cy="8" r="6" /> </svg></span>
                 <span class="metric-label">Central scenario</span>
                 <strong class="metric-value" id="overviewGain">8.87%</strong>
                 <span class="metric-meta">mean revenue gain · N = 5,000</span>
@@ -182,10 +183,10 @@
                   <h3>What this prototype is — and is not</h3>
                 </div>
               </div>
-              <div class="boundary-row positive"><span aria-hidden="true">✓</span><div><strong>Technical proof of concept</strong><p>Integrates the executed thesis outputs into an accessible interface.</p></div></div>
-              <div class="boundary-row positive"><span aria-hidden="true">✓</span><div><strong>Transparent scenario tool</strong><p>Shows the assumptions and sensitivity grid behind each estimate.</p></div></div>
-              <div class="boundary-row warning"><span aria-hidden="true">!</span><div><strong>Not a field estimate</strong><p>All outputs are based on a synthetic analytical sample.</p></div></div>
-              <div class="boundary-row warning"><span aria-hidden="true">!</span><div><strong>Not an automated decision</strong><p>Human judgement and observed-data validation remain essential.</p></div></div>
+              <div class="boundary-row positive"><span aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><strong>Technical proof of concept</strong><p>Integrates the executed thesis outputs into an accessible interface.</p></div></div>
+              <div class="boundary-row positive"><span aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg></span><div><strong>Transparent scenario tool</strong><p>Shows the assumptions and sensitivity grid behind each estimate.</p></div></div>
+              <div class="boundary-row warning"><span aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-triangle-alert" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg></span><div><strong>Not a field estimate</strong><p>All outputs are based on a synthetic analytical sample.</p></div></div>
+              <div class="boundary-row warning"><span aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-triangle-alert" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /> </svg></span><div><strong>Not an automated decision</strong><p>Human judgement and observed-data validation remain essential.</p></div></div>
             </article>
           </section>
 
@@ -282,7 +283,7 @@
               </div>
             </article>
             <article class="panel insight-card">
-              <span class="insight-symbol" aria-hidden="true">↗</span>
+              <span class="insight-symbol" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-search" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg></span>
               <div><span class="panel-kicker">Question for field investigation</span><h3>Which farmers consistently face route costs above 452.25?</h3><p>Observed transport, road quality and sale-location data would be needed to answer this responsibly.</p></div>
             </article>
           </section>
@@ -524,9 +525,9 @@
               <div class="panel-heading"><div><span class="panel-kicker">Data flow</span><h3>What the service does</h3></div></div>
               <div class="service-flow">
                 <div><span>1</span><strong>Frozen JSON</strong><small>Verified thesis output</small></div>
-                <i aria-hidden="true">→</i>
+                <i aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></i>
                 <div><span>2</span><strong>Read-only service</strong><small>No uploads or database</small></div>
-                <i aria-hidden="true">→</i>
+                <i aria-hidden="true"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></i>
                 <div><span>3</span><strong>Browser views</strong><small>Bounded exploration</small></div>
               </div>
               <div class="endpoint-list">
@@ -563,7 +564,7 @@
             <div><strong>Need the underlying evidence?</strong><span>Download the exact JSON snapshot or print a concise prototype record.</span></div>
             <div class="inline-actions">
               <button class="button secondary" type="button" id="downloadJsonButton">Download JSON</button>
-              <button class="button primary" type="button" id="printButton">Print summary</button>
+              <button class="button primary" type="button" id="printButton"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-printer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /> </svg>Print summary</button>
             </div>
           </section>
         </div>
@@ -578,7 +579,7 @@
 
   <dialog id="helpDialog" class="help-dialog">
     <form method="dialog">
-      <button class="dialog-close" value="close" aria-label="Close guide">×</button>
+      <button class="dialog-close" value="close" aria-label="Close guide"><svg aria-hidden="true" focusable="false" class="ico lucide lucide-x" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg></button>
       <span class="eyebrow dark">Prototype guide</span>
       <h2>Use evidence in four steps</h2>
       <ol class="guide-list">

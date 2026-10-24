@@ -295,7 +295,7 @@
     ];
 
     ctx.lineWidth = 0.7;
-    ctx.strokeStyle = "rgba(101, 127, 151, 0.25)";
+    ctx.strokeStyle = "rgba(91, 122, 99, 0.22)";
     farmers.forEach((farmer) => {
       const destination = buying[Math.floor(rand() * buying.length)];
       ctx.beginPath();
@@ -304,7 +304,7 @@
       ctx.stroke();
     });
 
-    ctx.strokeStyle = "rgba(78, 103, 126, 0.42)";
+    ctx.strokeStyle = "rgba(91, 58, 41, 0.32)";
     ctx.lineWidth = 1;
     buying.forEach((node, index) => {
       const destination = depots[index % depots.length];
@@ -314,7 +314,7 @@
       ctx.stroke();
     });
 
-    ctx.strokeStyle = "rgba(35, 73, 102, 0.55)";
+    ctx.strokeStyle = "rgba(31, 58, 46, 0.5)";
     ctx.lineWidth = 1.4;
     depots.forEach((node, index) => {
       const destination = ports[index < 4 ? 0 : 1];
@@ -324,7 +324,7 @@
       ctx.stroke();
     });
 
-    ctx.fillStyle = "rgba(94, 159, 211, 0.72)";
+    ctx.fillStyle = "rgba(127, 168, 139, 0.85)";
     farmers.forEach((node) => {
       ctx.beginPath();
       ctx.arc(node.x, node.y, 2.2, 0, Math.PI * 2);
@@ -333,13 +333,13 @@
 
     buying.forEach((node) => {
       const selected = state.selectedNode?.kind === "buying" && state.selectedNode.node === node.id;
-      ctx.fillStyle = selected ? "#c57f0f" : "#e7a93b";
+      ctx.fillStyle = selected ? "#85590D" : "#D9A441";
       ctx.fillRect(node.x - (selected ? 5 : 3.5), node.y - (selected ? 5 : 3.5), selected ? 10 : 7, selected ? 10 : 7);
     });
 
     depots.forEach((node) => {
       const selected = state.selectedNode?.kind === "depot" && state.selectedNode.node === node.id;
-      ctx.fillStyle = selected ? "#2c6ed5" : "#173f5f";
+      ctx.fillStyle = selected ? "#D9A441" : "#5B3A29";
       ctx.beginPath();
       ctx.moveTo(node.x, node.y - (selected ? 7 : 5));
       ctx.lineTo(node.x + (selected ? 7 : 5), node.y + (selected ? 6 : 5));
@@ -349,7 +349,7 @@
     });
 
     ports.forEach((node) => {
-      ctx.fillStyle = "#168b84";
+      ctx.fillStyle = "#1F3A2E";
       ctx.beginPath();
       ctx.arc(node.x, node.y, 7, 0, Math.PI * 2);
       ctx.fill();
@@ -364,7 +364,7 @@
       const collection = selected.kind === "depot" ? depots : buying;
       const point = collection.find((node) => node.id === selected.node) || collection[0];
       ctx.font = "700 10px Inter, sans-serif";
-      ctx.fillStyle = "#102a43";
+      ctx.fillStyle = "#1B241F";
       ctx.fillText(`${selected.node} selected`, Math.max(8, point.x - 34), Math.max(13, point.y - 12));
     }
   }
@@ -468,7 +468,7 @@
         const value = sensitivityValue(saving, premium);
         const lightness = 96 - (value - 4.8) * 4.1;
         const selected = state.scenario.saving === saving && Math.abs(state.scenario.premium - premium) < 0.001;
-        html += `<button type="button" class="heatmap-cell ${selected ? "selected" : ""}" data-saving="${saving}" data-premium="${premium.toFixed(2)}" style="background:hsl(195 54% ${lightness.toFixed(1)}%)" aria-label="${saving}% saving and GHS ${premium.toFixed(2)} per kilogram premium gives ${value.toFixed(2)}% mean gain">${value.toFixed(2)}%</button>`;
+        html += `<button type="button" class="heatmap-cell ${selected ? "selected" : ""}" data-saving="${saving}" data-premium="${premium.toFixed(2)}" style="background:hsl(140 28% ${lightness.toFixed(1)}%)" aria-label="${saving}% saving and GHS ${premium.toFixed(2)} per kilogram premium gives ${value.toFixed(2)}% mean gain">${value.toFixed(2)}%</button>`;
       });
     });
     grid.innerHTML = html;
@@ -601,8 +601,8 @@
     }
 
     const gradient = ctx.createLinearGradient(0, top, 0, bottom);
-    gradient.addColorStop(0, "rgba(22, 139, 132, 0.42)");
-    gradient.addColorStop(1, "rgba(22, 139, 132, 0.03)");
+    gradient.addColorStop(0, "rgba(46, 86, 65, 0.38)");
+    gradient.addColorStop(1, "rgba(46, 86, 65, 0.03)");
     ctx.beginPath();
     ctx.moveTo(left, bottom);
     points.forEach((point) => ctx.lineTo(point.x, point.y));
@@ -616,14 +616,14 @@
       if (index === 0) ctx.moveTo(point.x, point.y);
       else ctx.lineTo(point.x, point.y);
     });
-    ctx.strokeStyle = "#168b84";
+    ctx.strokeStyle = "#1F3A2E";
     ctx.lineWidth = 2;
     ctx.stroke();
 
     ctx.beginPath();
     ctx.moveTo(left, bottom);
     ctx.lineTo(right, bottom);
-    ctx.strokeStyle = "#cfd9e2";
+    ctx.strokeStyle = "#DCE2DA";
     ctx.lineWidth = 1;
     ctx.stroke();
 
@@ -633,7 +633,7 @@
       ctx.beginPath();
       ctx.moveTo(x, bottom);
       ctx.lineTo(x, index === 1 ? top + 4 : top + 34);
-      ctx.strokeStyle = index === 1 ? "#102a43" : "#8aa0b4";
+      ctx.strokeStyle = index === 1 ? "#1B241F" : "#8A5A3B";
       ctx.lineWidth = index === 1 ? 1.6 : 1;
       ctx.stroke();
     });
@@ -822,10 +822,12 @@
     byId("exportPdfButton").addEventListener("click", () => window.print());
     window.addEventListener("beforeprint", () => {
       state.printing = true;
+      $$(".view").forEach((view) => { view.hidden = false; });
       $$(".accordion details").forEach((detail) => {
         detail.dataset.wasOpen = detail.open ? "true" : "false";
         detail.open = true;
       });
+      void document.body.offsetHeight;
       drawNetwork();
       drawDistribution();
     });
@@ -834,6 +836,7 @@
       $$(".accordion details").forEach((detail) => {
         detail.open = detail.dataset.wasOpen === "true";
       });
+      navigate(state.activeView, { fromHash: true, focus: false });
     });
 
     const helpDialog = byId("helpDialog");
@@ -849,7 +852,7 @@
     window.addEventListener("resize", () => {
       if (state.activeView === "network") drawNetwork();
       if (state.activeView === "scenario") drawDistribution();
-      if (window.innerWidth > 980) closeMobileNavigation();
+      if (window.innerWidth > 1024) closeMobileNavigation();
     });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeMobileNavigation();

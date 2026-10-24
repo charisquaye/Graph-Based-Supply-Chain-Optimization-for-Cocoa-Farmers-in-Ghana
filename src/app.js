@@ -22,6 +22,7 @@
     },
     comparisons: [],
     scenarioCounter: 1,
+    printing: false,
   };
 
   const titles = {
@@ -268,7 +269,7 @@
   }
 
   function drawNetwork() {
-    if (!state.data || state.activeView !== "network") return;
+    if (!state.data || (state.activeView !== "network" && !state.printing)) return;
     const canvas = byId("networkCanvas");
     const { context: ctx, width, height } = resizeCanvas(canvas, canvas.clientHeight || 360);
     ctx.clearRect(0, 0, width, height);
@@ -575,7 +576,7 @@
   }
 
   function drawDistribution() {
-    if (!state.data || state.activeView !== "scenario") return;
+    if (!state.data || (state.activeView !== "scenario" && !state.printing)) return;
     const canvas = byId("distributionCanvas");
     const { context: ctx, width, height } = resizeCanvas(canvas, canvas.clientHeight || 170);
     ctx.clearRect(0, 0, width, height);
@@ -818,6 +819,22 @@
     byId("exportResultsButton").addEventListener("click", downloadResults);
     byId("downloadJsonButton").addEventListener("click", downloadResults);
     byId("printButton").addEventListener("click", () => window.print());
+    byId("exportPdfButton").addEventListener("click", () => window.print());
+    window.addEventListener("beforeprint", () => {
+      state.printing = true;
+      $$(".accordion details").forEach((detail) => {
+        detail.dataset.wasOpen = detail.open ? "true" : "false";
+        detail.open = true;
+      });
+      drawNetwork();
+      drawDistribution();
+    });
+    window.addEventListener("afterprint", () => {
+      state.printing = false;
+      $$(".accordion details").forEach((detail) => {
+        detail.open = detail.dataset.wasOpen === "true";
+      });
+    });
 
     const helpDialog = byId("helpDialog");
     byId("helpButton").addEventListener("click", () => {

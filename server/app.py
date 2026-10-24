@@ -10,9 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from flask import Flask, Response, abort, jsonify, request, send_from_directory
-
-from server.report_pdf import build_report_pdf
+from flask import Flask, abort, jsonify, request, send_from_directory
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "src"
@@ -94,18 +92,6 @@ def health():
 @app.get("/api/results")
 def results():
     return jsonify(RESULTS)
-
-
-@app.get("/api/report.pdf")
-def report_pdf():
-    payload = build_report_pdf(RESULTS)
-    return Response(
-        payload,
-        mimetype="application/pdf",
-        headers={
-            "Content-Disposition": 'attachment; filename="cocoa-network-decision-support-report.pdf"',
-        },
-    )
 
 
 @app.get("/api/scenario")

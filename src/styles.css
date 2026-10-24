@@ -377,11 +377,6 @@ a:focus-visible {
   transition: 150ms ease;
 }
 
-a.button {
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .button:hover {
   transform: translateY(-1px);
 }
@@ -2354,6 +2349,16 @@ footer {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   .sidebar,
   .topbar,
   .hero-actions,
@@ -2374,9 +2379,16 @@ footer {
     padding: 0;
   }
 
+  .view,
   .view[hidden] {
     display: block !important;
+    break-before: page;
     page-break-before: always;
+  }
+
+  #overview {
+    break-before: auto;
+    page-break-before: auto;
   }
 
   .hero,

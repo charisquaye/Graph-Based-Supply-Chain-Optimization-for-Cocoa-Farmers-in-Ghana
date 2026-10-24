@@ -233,6 +233,7 @@ td button,.table-select{border:1px solid var(--line-strong);background:var(--sur
 .gain-card span{font-size:var(--t-sm);color:var(--ink-2)}
 .gain-card small{font-size:var(--t-sm);color:var(--ink-3);font-variant-numeric:tabular-nums}
 .feature-chart{display:grid;gap:var(--s-2)}
+.source-note{margin:var(--s-3) 0 0;font-size:var(--t-xs, .75rem);color:var(--ink-3)}
 .feature-row{display:grid;grid-template-columns:170px 1fr 64px;align-items:center;gap:var(--s-3);font-size:var(--t-sm)}
 .feature-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .feature-track{height:12px;background:#F0F3EE;border-radius:3px;overflow:hidden;display:block}

@@ -573,6 +573,7 @@
       byId("scenarioInterval").textContent = "Not recalculated";
       byId("intervalLabel").textContent = "rerun simulation for uncertainty";
     }
+    renderScenarioInterpretation();
   }
 
   function drawDistribution() {
@@ -859,12 +860,112 @@
     });
   }
 
+  // ---- interpretation panels (text loaded verbatim from interpretations.json) ----
+  const interp = { entries: null, open: new Set() };
+
+  function interpretationPanel(key) {
+    const entry = interp.entries && interp.entries[key];
+    if (!entry) return null;
+    const bodyId = `interp-body-${key}`;
+    const expanded = interp.open.has(key);
+
+    const section = document.createElement("section");
+    section.className = "panel interp-panel";
+    section.dataset.interpKey = key;
+
+    const heading = document.createElement("h3");
+    heading.className = "interp-heading";
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "interp-toggle";
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.setAttribute("aria-controls", bodyId);
+    const kicker = document.createElement("span");
+    kicker.className = "panel-kicker";
+    kicker.textContent = "Interpretation";
+    const title = document.createElement("span");
+    title.className = "interp-title";
+    title.textContent = entry.title;
+    const chevron = document.createElement("span");
+    chevron.className = "interp-chevron";
+    chevron.setAttribute("aria-hidden", "true");
+    toggle.append(kicker, title, chevron);
+    heading.append(toggle);
+    section.append(heading);
+
+    if (entry.label) {
+      const badge = document.createElement("span");
+      badge.className = "interp-badge";
+      badge.textContent = entry.label;
+      section.append(badge);
+    }
+
+    const body = document.createElement("div");
+    body.className = "interp-body";
+    body.id = bodyId;
+    body.hidden = !expanded;
+    const text = document.createElement("p");
+    text.textContent = entry.body;
+    body.append(text);
+    if (entry.caveat) {
+      const caveat = document.createElement("p");
+      caveat.className = "interp-caveat";
+      caveat.textContent = entry.caveat;
+      body.append(caveat);
+    }
+    section.append(body);
+
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      body.hidden = !open;
+      if (open) interp.open.add(key);
+      else interp.open.delete(key);
+    });
+    return section;
+  }
+
+  function fillInterpretationSlot(view, keys) {
+    const slot = byId(`interp-${view}`);
+    if (!slot || !interp.entries) return;
+    slot.replaceChildren(...keys.map(interpretationPanel).filter(Boolean));
+  }
+
+  function scenarioInterpretationKeys() {
+    const scenario = state.scenario;
+    const keys = ["scenario-how-to-read"];
+    if (scenario.central) {
+      keys.push("central-executed-scenario");
+    } else {
+      keys.push(`grid_s${scenario.saving}_p${String(Math.round(scenario.premium * 100)).padStart(3, "0")}`);
+    }
+    if (scenario.participation !== 65) keys.push("exploratory-participation-rescaling");
+    return keys;
+  }
+
+  function renderScenarioInterpretation() {
+    fillInterpretationSlot("scenario", scenarioInterpretationKeys());
+  }
+
+  async function loadInterpretations() {
+    try {
+      const response = await fetch("/interpretations.json", { headers: { Accept: "application/json" } });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      interp.entries = await response.json();
+    } catch (error) {
+      console.warn("Interpretations unavailable", error);
+      return;
+    }
+    ["overview", "network", "models", "methods"].forEach((view) => fillInterpretationSlot(view, [view]));
+    renderScenarioInterpretation();
+  }
+
   async function initialise() {
     bindEvents();
     renderScenarioComparisons();
     const initialView = window.location.hash.slice(1);
     navigate(titles[initialView] ? initialView : "overview", { fromHash: true, focus: false });
-    await loadData();
+    await Promise.all([loadData(), loadInterpretations()]);
   }
 
   initialise();

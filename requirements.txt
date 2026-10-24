@@ -6,3 +6,4 @@ xgboost==2.1.1
 scipy==1.14.0
 matplotlib==3.9.0
 Flask==3.1.2
+fpdf2==2.8.4

@@ -377,6 +377,11 @@ a:focus-visible {
   transition: 150ms ease;
 }
 
+a.button {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .button:hover {
   transform: translateY(-1px);
 }
@@ -2192,6 +2197,10 @@ footer {
 
   .topbar-actions .secondary {
     display: none;
+  }
+
+  .topbar-actions #exportPdfButton {
+    display: inline-flex;
   }
 
   main {

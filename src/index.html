@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="Thesis-backed network, predictive-model and revenue-scenario evidence for Ghana's cocoa supply chain.">
+  <meta property="og:title" content="Cocoa Network Decision Support">
+  <meta property="og:description" content="Explore graph structure, model evidence and collaborative transport scenarios from a reproducible synthetic study.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Cocoa Network Decision Support</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="app-shell">
+    <div class="mobile-overlay" id="mobileOverlay" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">CN</span>
+        <span>
+          <strong>Cocoa Network</strong>
+          <small>Decision support</small>
+        </span>
+      </div>
+
+      <nav class="primary-nav" aria-label="Prototype views">
+        <button class="nav-item active" type="button" data-view="overview" aria-current="page">
+          <span class="nav-symbol" aria-hidden="true">⌂</span>
+          <span><strong>Overview</strong><small>Study snapshot</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="network">
+          <span class="nav-symbol" aria-hidden="true">◎</span>
+          <span><strong>Network explorer</strong><small>Routes &amp; intermediaries</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="models">
+          <span class="nav-symbol" aria-hidden="true">▥</span>
+          <span><strong>Model evidence</strong><small>Performance &amp; features</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="scenario">
+          <span class="nav-symbol" aria-hidden="true">◇</span>
+          <span><strong>Scenario lab</strong><small>Revenue assumptions</small></span>
+        </button>
+        <button class="nav-item" type="button" data-view="methods">
+          <span class="nav-symbol" aria-hidden="true">≡</span>
+          <span><strong>Methods &amp; limits</strong><small>Audit the evidence</small></span>
+        </button>
+      </nav>
+
+      <div class="run-card">
+        <div class="run-card-head">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Frozen study run</span>
+        </div>
+        <dl>
+          <div><dt>Seed</dt><dd>20250115</dd></div>
+          <div><dt>Cross-validation</dt><dd>5 folds</dd></div>
+          <div><dt>Simulation</dt><dd>5,000 runs</dd></div>
+        </dl>
+        <button class="text-button inverse" type="button" id="viewMethodsButton">View methodology →</button>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-title">
+          <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+          <div>
+            <span class="breadcrumb">Ghana cocoa supply-chain analytics</span>
+            <h1 id="viewTitle">Evidence overview</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="data-status" id="dataStatus"><span class="status-dot" aria-hidden="true"></span>Loading study data…</span>
+          <button class="button secondary compact" type="button" id="helpButton">Guide</button>
+          <button class="button primary compact" type="button" id="exportResultsButton">Export results</button>
+        </div>
+      </header>
+
+      <main id="main-content" tabindex="-1">
+        <div class="view active" id="overview" data-title="Evidence overview">
+          <section class="hero">
+            <div class="hero-copy">
+              <span class="eyebrow">Graph-based supply-chain optimisation</span>
+              <h2>From network structure to practical scenario evidence</h2>
+              <p>This prototype connects the thesis network analysis, predictive models and Monte Carlo revenue simulation in one transparent decision-support workflow.</p>
+              <div class="hero-actions">
+                <button class="button light" type="button" data-go="scenario">Explore a scenario</button>
+                <button class="button ghost-light" type="button" data-go="network">Inspect the network</button>
+              </div>
+              <p class="hero-note"><span aria-hidden="true">ⓘ</span> Synthetic study data · indicative results · not operational advice</p>
+            </div>
+            <div class="hero-visual" aria-label="Three-stage decision-support workflow">
+              <div class="workflow-node">
+                <span class="workflow-number">01</span>
+                <strong>Map</strong>
+                <small>Identify access constraints</small>
+              </div>
+              <span class="workflow-arrow" aria-hidden="true">→</span>
+              <div class="workflow-node">
+                <span class="workflow-number">02</span>
+                <strong>Model</strong>
+                <small>Measure added information</small>
+              </div>
+              <span class="workflow-arrow" aria-hidden="true">→</span>
+              <div class="workflow-node accent">
+                <span class="workflow-number">03</span>
+                <strong>Explore</strong>
+                <small>Test bounded assumptions</small>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-block" aria-labelledby="headlineMetrics">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow dark">Executed analysis</span>
+                <h2 id="headlineMetrics">Headline evidence</h2>
+              </div>
+              <span class="verified-pill">Reproducible snapshot</span>
+            </div>
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span class="metric-icon blue" aria-hidden="true">◎</span>
+                <span class="metric-label">Network scale</span>
+                <strong class="metric-value" id="overviewNodes">957</strong>
+                <span class="metric-meta">nodes · <b id="overviewEdges">1,853</b> directed edges</span>
+              </article>
+              <article class="metric-card">
+                <span class="metric-icon teal" aria-hidden="true">◉</span>
+                <span class="metric-label">Community structure</span>
+                <strong class="metric-value" id="overviewCommunities">10</strong>
+                <span class="metric-meta">Louvain groups · modularity <b id="overviewModularity">0.7717</b></span>
+              </article>
+              <article class="metric-card">
+                <span class="metric-icon gold" aria-hidden="true">↗</span>
+                <span class="metric-label">Best predictive fit</span>
+                <strong class="metric-value" id="overviewR2">0.8549</strong>
+                <span class="metric-meta">Random Forest R² · network features</span>
+              </article>
+              <article class="metric-card">
+                <span class="metric-icon green" aria-hidden="true">₵</span>
+                <span class="metric-label">Central scenario</span>
+                <strong class="metric-value" id="overviewGain">8.87%</strong>
+                <span class="metric-meta">mean revenue gain · N = 5,000</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="content-grid overview-grid">
+            <article class="panel decision-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">Decision pathway</span>
+                  <h3>How to use the evidence</h3>
+                </div>
+              </div>
+              <ol class="decision-list">
+                <li>
+                  <span>1</span>
+                  <div><strong>Find a question</strong><p>Use route exposure and centrality to identify where closer operational investigation may be useful.</p></div>
+                </li>
+                <li>
+                  <span>2</span>
+                  <div><strong>Check the evidence</strong><p>Compare model specifications and feature importance before interpreting structural signals.</p></div>
+                </li>
+                <li>
+                  <span>3</span>
+                  <div><strong>Test assumptions</strong><p>Use the Scenario Lab to inspect conditional implications, not guaranteed outcomes.</p></div>
+                </li>
+              </ol>
+            </article>
+
+            <article class="panel boundary-panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="panel-kicker">Interpretation boundary</span>
+                  <h3>What this prototype is — and is not</h3>
+                </div>
+              </div>
+              <div class="boundary-row positive"><span aria-hidden="true">✓</span><div><strong>Technical proof of concept</strong><p>Integrates the executed thesis outputs into an accessible interface.</p></div></div>
+              <div class="boundary-row positive"><span aria-hidden="true">✓</span><div><strong>Transparent scenario tool</strong><p>Shows the assumptions and sensitivity grid behind each estimate.</p></div></div>
+              <div class="boundary-row warning"><span aria-hidden="true">!</span><div><strong>Not a field estimate</strong><p>All outputs are based on a synthetic analytical sample.</p></div></div>
+              <div class="boundary-row warning"><span aria-hidden="true">!</span><div><strong>Not an automated decision</strong><p>Human judgement and observed-data validation remain essential.</p></div></div>
+            </article>
+          </section>
+
+          <section class="evidence-banner">
+            <div>
+              <span class="eyebrow">Research Objective 5</span>
+              <h3>Technical proof-of-concept level achieved</h3>
+              <p>The interface integrates graph diagnostics, predictive-model results, Monte Carlo revenue outputs and bounded sensitivity controls.</p>
+            </div>
+            <button class="button secondary" type="button" data-go="methods">Review attainment &amp; limits</button>
+          </section>
+        </div>
+
+        <div class="view" id="network" data-title="Network explorer" hidden>
+          <section class="page-intro">
+            <div>
+              <span class="eyebrow dark">Network intelligence</span>
+              <h2>Explore supply-chain structure</h2>
+              <p>Inspect structural indicators, route exposure and critical intermediaries in the executed synthetic network.</p>
+            </div>
+            <span class="warning-pill">Illustrative topology</span>
+          </section>
+
+          <div class="metric-grid compact-grid">
+            <article class="metric-card compact"><span class="metric-label">Mean farmer out-degree</span><strong class="metric-value" id="meanOutDegree">1.948</strong><span class="metric-meta">directed links</span></article>
+            <article class="metric-card compact"><span class="metric-label">Network density</span><strong class="metric-value" id="networkDensity">0.00203</strong><span class="metric-meta">sparse directed graph</span></article>
+            <article class="metric-card compact"><span class="metric-label">Mean route cost</span><strong class="metric-value" id="meanRouteCost">322.22</strong><span class="metric-meta">composite units</span></article>
+            <article class="metric-card compact"><span class="metric-label">90th percentile cost</span><strong class="metric-value" id="p90RouteCost">452.25</strong><span class="metric-meta">composite units</span></article>
+          </div>
+
+          <section class="network-layout">
+            <article class="panel network-canvas-panel">
+              <div class="panel-heading split">
+                <div><span class="panel-kicker">Deterministic study view</span><h3>Directed market network</h3></div>
+                <div class="legend" aria-label="Node types">
+                  <span><i class="farmer-dot"></i>Farmers</span>
+                  <span><i class="buying-dot"></i>Buying points</span>
+                  <span><i class="depot-dot"></i>Depots</span>
+                  <span><i class="port-dot"></i>Ports</span>
+                </div>
+              </div>
+              <div class="canvas-wrap">
+                <canvas id="networkCanvas" role="img" aria-label="Illustrative directed cocoa supply-chain network showing farmers linked to buying points, depots and ports"></canvas>
+                <div class="canvas-caption"><span>Upstream farmers</span><span>Market flow →</span><span>Ports</span></div>
+              </div>
+              <p class="panel-footnote">The topology is a deterministic visual summary, not a geographic map. Exact operational use requires validated coordinates and road-network routing.</p>
+            </article>
+
+            <aside class="panel node-detail-panel" aria-live="polite">
+              <div class="panel-heading"><div><span class="panel-kicker">Selected intermediary</span><h3 id="selectedNodeName">D9 · District depot</h3></div></div>
+              <div class="node-badge" id="selectedNodeKind">Depot</div>
+              <dl class="detail-list">
+                <div><dt>Region</dt><dd id="selectedNodeRegion">Western North</dd></div>
+                <div><dt>Weighted betweenness</dt><dd id="selectedNodeBetweenness">0.0004</dd></div>
+                <div><dt>Degree centrality</dt><dd id="selectedNodeDegree">0.0167</dd></div>
+                <div><dt>Current rank</dt><dd id="selectedNodeRank">1 of 8</dd></div>
+              </dl>
+              <div class="interpretation-box">
+                <strong>Appropriate interpretation</strong>
+                <p>Prioritise this node for operational review and resilience testing. Do not infer that it should be removed or replaced.</p>
+              </div>
+            </aside>
+          </section>
+
+          <section class="panel table-panel">
+            <div class="panel-heading split">
+              <div><span class="panel-kicker">Weighted betweenness</span><h3>Critical intermediary ranking</h3></div>
+              <div class="table-actions">
+                <label class="field compact-field"><span>Region</span><select id="regionFilter"><option value="all">All regions</option></select></label>
+                <label class="field compact-field"><span>Type</span><select id="typeFilter"><option value="all">All types</option><option value="depot">Depots</option><option value="buying">Buying points</option></select></label>
+                <label class="field search-field"><span class="sr-only">Search nodes</span><input id="nodeSearch" type="search" placeholder="Search node or region"></label>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th>Rank</th><th>Node</th><th>Type</th><th>Region</th><th>Betweenness</th><th>Degree</th><th><span class="sr-only">Select</span></th></tr></thead>
+                <tbody id="centralityTableBody"></tbody>
+              </table>
+            </div>
+            <div class="empty-state" id="centralityEmpty" hidden>No intermediary matches the current filters.</div>
+          </section>
+
+          <section class="content-grid route-grid">
+            <article class="panel">
+              <div class="panel-heading"><div><span class="panel-kicker">Reachable farmers: 900</span><h3>Route-cost distribution</h3></div></div>
+              <div class="route-scale" aria-label="Route cost summary from minimum 128.10 to maximum 648.80">
+                <div class="route-track">
+                  <span class="route-fill"></span>
+                  <i class="route-marker min" style="left:0%"><b>128.10</b><small>Minimum</small></i>
+                  <i class="route-marker median" style="left:34.55%"><b>308.10</b><small>Median</small></i>
+                  <i class="route-marker p90" style="left:62.24%"><b>452.25</b><small>90th %ile</small></i>
+                  <i class="route-marker max" style="left:100%"><b>648.80</b><small>Maximum</small></i>
+                </div>
+              </div>
+            </article>
+            <article class="panel insight-card">
+              <span class="insight-symbol" aria-hidden="true">↗</span>
+              <div><span class="panel-kicker">Question for field investigation</span><h3>Which farmers consistently face route costs above 452.25?</h3><p>Observed transport, road quality and sale-location data would be needed to answer this responsibly.</p></div>
+            </article>
+          </section>
+        </div>
+
+        <div class="view" id="models" data-title="Model evidence" hidden>
+          <section class="page-intro">
+            <div>
+              <span class="eyebrow dark">Predictive analytics</span>
+              <h2>Compare model evidence</h2>
+              <p>Review cross-validated performance with and without graph-derived features across three evaluation metrics.</p>
+            </div>
+            <span class="verified-pill">5-fold cross-validation · n = 900</span>
+          </section>
+
+          <section class="content-grid model-top-grid">
+            <article class="panel model-chart-panel">
+              <div class="panel-heading split">
+                <div><span class="panel-kicker">Model comparison</span><h3 id="metricChartTitle">Cross-validated R²</h3></div>
+                <div class="segment-control" role="group" aria-label="Select evaluation metric">
+                  <button type="button" class="active" data-metric="R2">R²</button>
+                  <button type="button" data-metric="RMSE">RMSE</button>
+                  <button type="button" data-metric="MAE">MAE</button>
+                </div>
+              </div>
+              <div class="model-chart" id="modelChart" aria-live="polite"></div>
+              <div class="chart-legend"><span><i class="base-color"></i>Base features</span><span><i class="network-color"></i>Base + network</span></div>
+            </article>
+
+            <aside class="model-gains">
+              <article class="gain-card">
+                <span class="model-name">Random Forest</span>
+                <strong>31.95%</strong>
+                <span>RMSE reduction with network features</span>
+                <small>0.5436 → 0.3699</small>
+              </article>
+              <article class="gain-card">
+                <span class="model-name">XGBoost</span>
+                <strong>29.57%</strong>
+                <span>RMSE reduction with network features</span>
+                <small>0.5557 → 0.3914</small>
+              </article>
+            </aside>
+          </section>
+
+          <section class="content-grid model-bottom-grid">
+            <article class="panel feature-panel">
+              <div class="panel-heading split">
+                <div><span class="panel-kicker">Augmented XGBoost model</span><h3>Feature importance</h3></div>
+                <label class="field compact-field"><span>Show</span><select id="featureCount"><option value="5">Top 5</option><option value="10">Top 10</option><option value="16">All 16</option></select></label>
+              </div>
+              <div class="feature-chart" id="featureChart"></div>
+            </article>
+
+            <article class="panel interpretation-panel">
+              <div class="panel-heading"><div><span class="panel-kicker">Evidence boundary</span><h3>Read the gain correctly</h3></div></div>
+              <div class="callout teal-callout">
+                <strong>No target leakage in graph construction</strong>
+                <p>Route cost and network features were derived from graph structure without using the price target.</p>
+              </div>
+              <div class="callout gold-callout">
+                <strong>Injected signal, not causal proof</strong>
+                <p>The synthetic price generator intentionally contains route-cost and community effects. The gain demonstrates signal recovery.</p>
+              </div>
+              <div class="placebo-row">
+                <div><span>Yield R² · base</span><strong>0.4870</strong></div>
+                <span aria-hidden="true">→</span>
+                <div><span>Yield R² · + network</span><strong>0.4769</strong></div>
+              </div>
+              <p class="panel-footnote">The yield check does not show a comparable improvement, supporting the intended specificity of the synthetic price signal.</p>
+            </article>
+          </section>
+
+          <section class="panel evidence-table-panel">
+            <div class="panel-heading"><div><span class="panel-kicker">Full diagnostics</span><h3>Cross-validated model results</h3></div></div>
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th>Model</th><th>Features</th><th>RMSE</th><th>MAE</th><th>R²</th></tr></thead>
+                <tbody id="modelResultsBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div class="view" id="scenario" data-title="Scenario lab" hidden>
+          <section class="page-intro">
+            <div>
+              <span class="eyebrow dark">Monte Carlo revenue analysis</span>
+              <h2>Test collaborative transport assumptions</h2>
+              <p>Explore the executed 3 × 3 sensitivity grid and a clearly labelled participation rescaling.</p>
+            </div>
+            <span class="warning-pill">Scenario, not forecast</span>
+          </section>
+
+          <section class="scenario-layout">
+            <aside class="panel scenario-controls">
+              <div class="panel-heading"><div><span class="panel-kicker">Bounded inputs</span><h3>Scenario assumptions</h3></div></div>
+
+              <fieldset class="choice-group">
+                <legend>Transport saving</legend>
+                <div class="choice-buttons" id="savingChoices">
+                  <button type="button" data-value="20">20%</button>
+                  <button type="button" class="active" data-value="35">35%</button>
+                  <button type="button" data-value="50">50%</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="choice-group">
+                <legend>Bargaining premium</legend>
+                <div class="choice-buttons" id="premiumChoices">
+                  <button type="button" data-value="0.15">GHS 0.15/kg</button>
+                  <button type="button" class="active" data-value="0.30">GHS 0.30/kg</button>
+                  <button type="button" data-value="0.45">GHS 0.45/kg</button>
+                </div>
+              </fieldset>
+
+              <label class="range-field" for="participationRange">
+                <span><strong>Participation assumption</strong><output id="participationOutput">65%</output></span>
+                <input id="participationRange" type="range" min="20" max="90" step="5" value="65">
+                <small><span>20%</span><span>55%</span><span>90%</span></small>
+              </label>
+
+              <button class="button primary full" type="button" id="runScenarioButton">Run scenario</button>
+              <button class="button secondary full" type="button" id="resetScenarioButton">Reset to central case</button>
+
+              <div class="control-note">
+                <strong>Use with care</strong>
+                <p>The executed model varies participation with community size. This control applies a proportional rescaling for exploratory discussion only.</p>
+              </div>
+            </aside>
+
+            <div class="scenario-results">
+              <article class="scenario-hero">
+                <div class="scenario-primary">
+                  <span>Estimated aggregate revenue gain</span>
+                  <strong id="scenarioGain" aria-live="polite">8.87%</strong>
+                  <small id="scenarioLabel">Central executed scenario</small>
+                </div>
+                <div class="scenario-stat"><span>Mean baseline revenue</span><strong id="baselineRevenue">GHS 9,153.69</strong><small>per farmer</small></div>
+                <div class="scenario-stat"><span>Mean optimised revenue</span><strong id="optimisedRevenue">GHS 9,965.87</strong><small>per farmer</small></div>
+                <div class="scenario-stat"><span>95% simulation interval</span><strong id="scenarioInterval">8.59%–9.14%</strong><small id="intervalLabel">central simulation</small></div>
+              </article>
+
+              <section class="content-grid scenario-grid">
+                <article class="panel sensitivity-panel">
+                  <div class="panel-heading split">
+                    <div><span class="panel-kicker">Executed sensitivity</span><h3>Mean revenue gain</h3></div>
+                    <span class="mini-note">Click a cell to apply</span>
+                  </div>
+                  <div class="heatmap" id="sensitivityGrid" aria-label="Sensitivity grid showing mean revenue gain by transport saving and bargaining premium"></div>
+                </article>
+
+                <article class="panel distribution-panel">
+                  <div class="panel-heading"><div><span class="panel-kicker">Central simulation</span><h3>Gain distribution</h3></div></div>
+                  <canvas id="distributionCanvas" role="img" aria-label="Illustrative normal curve summarising the central 5,000-iteration simulated revenue-gain distribution"></canvas>
+                  <div class="distribution-labels"><span>8.59%<small>Lower 95%</small></span><span>8.87%<small>Mean</small></span><span>9.14%<small>Upper 95%</small></span></div>
+                </article>
+              </section>
+
+              <section class="panel comparison-panel">
+                <div class="panel-heading split">
+                  <div><span class="panel-kicker">Working comparison</span><h3>Saved scenarios</h3></div>
+                  <div class="inline-actions">
+                    <button class="button secondary compact" type="button" id="saveScenarioButton">Add current</button>
+                    <button class="button secondary compact" type="button" id="downloadScenarioButton">Download CSV</button>
+                  </div>
+                </div>
+                <div class="table-scroll">
+                  <table>
+                    <thead><tr><th>Scenario</th><th>Saving</th><th>Premium</th><th>Participation</th><th>Gain</th><th>Mean revenue</th><th><span class="sr-only">Remove</span></th></tr></thead>
+                    <tbody id="scenarioComparisonBody"></tbody>
+                  </table>
+                </div>
+                <div class="empty-state" id="scenarioEmpty">No saved scenarios. Add the current result to compare alternatives.</div>
+              </section>
+
+              <div class="guardrail-strip">
+                <div><strong>Scenario, not forecast</strong><span>Assumptions do not guarantee returns.</span></div>
+                <div><strong>Participation is heterogeneous</strong><span>The executed model caps probability at 90%.</span></div>
+                <div><strong>Field validation required</strong><span>Observed cost, price and adoption data are essential.</span></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="view" id="methods" data-title="Methods & limits" hidden>
+          <section class="page-intro">
+            <div>
+              <span class="eyebrow dark">Reproducibility &amp; governance</span>
+              <h2>Audit the method and its limits</h2>
+              <p>Trace every headline result to the executed settings and review the safeguards required before field use.</p>
+            </div>
+            <span class="verified-pill" id="apiHealthPill">Checking service…</span>
+          </section>
+
+          <section class="content-grid methods-grid">
+            <article class="panel settings-card">
+              <div class="panel-heading"><div><span class="panel-kicker">Graph construction</span><h3>Route-weight settings</h3></div></div>
+              <dl class="settings-list">
+                <div><dt>Random seed</dt><dd>20250115</dd></div>
+                <div><dt>Distance coefficient α</dt><dd>1.0</dd></div>
+                <div><dt>Tariff coefficient β</dt><dd>0.8</dd></div>
+                <div><dt>Time coefficient γ</dt><dd>0.6</dd></div>
+                <div><dt>Reliability coefficient δ</dt><dd>25.0</dd></div>
+                <div><dt>Louvain resolution</dt><dd>1.0</dd></div>
+                <div><dt>Route algorithm</dt><dd>Dijkstra</dd></div>
+              </dl>
+            </article>
+
+            <article class="panel settings-card">
+              <div class="panel-heading"><div><span class="panel-kicker">Model evaluation</span><h3>Predictive settings</h3></div></div>
+              <dl class="settings-list">
+                <div><dt>Cross-validation</dt><dd>k = 5, shuffled</dd></div>
+                <div><dt>Random Forest</dt><dd>400 trees</dd></div>
+                <div><dt>RF maximum depth</dt><dd>None</dd></div>
+                <div><dt>XGBoost</dt><dd>500 trees</dd></div>
+                <div><dt>XGB depth</dt><dd>4</dd></div>
+                <div><dt>Learning rate</dt><dd>0.05</dd></div>
+                <div><dt>Target</dt><dd>GHS/kg</dd></div>
+              </dl>
+            </article>
+
+            <article class="panel settings-card">
+              <div class="panel-heading"><div><span class="panel-kicker">Revenue simulation</span><h3>Monte Carlo settings</h3></div></div>
+              <dl class="settings-list">
+                <div><dt>Iterations</dt><dd>N = 5,000</dd></div>
+                <div><dt>Central saving</dt><dd>35%</dd></div>
+                <div><dt>Central premium</dt><dd>GHS 0.30/kg</dd></div>
+                <div><dt>Mean gain</dt><dd>8.87%</dd></div>
+                <div><dt>Standard deviation</dt><dd>0.14</dd></div>
+                <div><dt>95% interval</dt><dd>8.59%–9.14%</dd></div>
+                <div><dt>Sensitivity span</dt><dd>4.88%–12.86%</dd></div>
+              </dl>
+            </article>
+          </section>
+
+          <section class="content-grid governance-grid">
+            <article class="panel">
+              <div class="panel-heading"><div><span class="panel-kicker">Data flow</span><h3>What the service does</h3></div></div>
+              <div class="service-flow">
+                <div><span>1</span><strong>Frozen JSON</strong><small>Verified thesis output</small></div>
+                <i aria-hidden="true">→</i>
+                <div><span>2</span><strong>Read-only service</strong><small>No uploads or database</small></div>
+                <i aria-hidden="true">→</i>
+                <div><span>3</span><strong>Browser views</strong><small>Bounded exploration</small></div>
+              </div>
+              <div class="endpoint-list">
+                <div><code>GET /</code><span>Interface</span><b class="endpoint-status">200</b></div>
+                <div><code>GET /api/health</code><span>Operating mode</span><b class="endpoint-status" id="healthStatus">…</b></div>
+                <div><code>GET /api/results</code><span>Frozen results</span><b class="endpoint-status" id="resultsStatus">…</b></div>
+                <div><code>GET /api/scenario</code><span>Bounded lookup</span><b class="endpoint-status" id="scenarioStatus">…</b></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading"><div><span class="panel-kicker">Deployment boundary</span><h3>Required before operational use</h3></div></div>
+              <ul class="readiness-list">
+                <li><span>01</span><div><strong>Observed-data partnership</strong><p>Agree a data dictionary, governance protocol and institutional responsibilities.</p></div></li>
+                <li><span>02</span><div><strong>External and temporal validation</strong><p>Re-estimate the graph and models using observed multi-season data.</p></div></li>
+                <li><span>03</span><div><strong>Human-centred research</strong><p>Conduct accessibility, terminology and task-based studies with intended users.</p></div></li>
+                <li><span>04</span><div><strong>Security and accountability</strong><p>Add role-based access, encryption, audit logging, monitoring and incident response.</p></div></li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="panel faq-panel">
+            <div class="panel-heading"><div><span class="panel-kicker">Interpretation guide</span><h3>Frequently asked questions</h3></div></div>
+            <div class="accordion">
+              <details open><summary>Can the prototype identify a depot that should be removed?</summary><p>No. Betweenness identifies candidates for review, but the thesis did not run removal-induced fragmentation experiments. Intervention requires observed network evidence and resilience testing.</p></details>
+              <details><summary>Does the 8.87% result predict what farmers will earn?</summary><p>No. It is the mean result of a synthetic, assumption-dependent Monte Carlo scenario. It is not a forecast, guarantee or observed sector estimate.</p></details>
+              <details><summary>Do network features prove a causal effect on price?</summary><p>No. Their predictive contribution recovers a structural signal deliberately injected into the synthetic price-generating process. Field causal evidence is still required.</p></details>
+              <details><summary>Has the interface been tested with farmers or cooperative leaders?</summary><p>No human-participant usability study was conducted. The implemented tasks were verified by the developer as functional acceptance tests only.</p></details>
+              <details><summary>Does the prototype store personal information?</summary><p>No. It uses a frozen synthetic snapshot, accepts no uploads and stores no farmer or user data. Saved scenario comparisons exist only in the current browser session.</p></details>
+            </div>
+          </section>
+
+          <section class="method-actions">
+            <div><strong>Need the underlying evidence?</strong><span>Download the exact JSON snapshot or print a concise prototype record.</span></div>
+            <div class="inline-actions">
+              <button class="button secondary" type="button" id="downloadJsonButton">Download JSON</button>
+              <button class="button primary" type="button" id="printButton">Print summary</button>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        <span>Graph-Based Supply Chain Optimization for Cocoa Farmers in Ghana</span>
+        <span>Research prototype · Emmanuel Mensah Quaye · MSc Data Science</span>
+      </footer>
+    </div>
+  </div>
+
+  <dialog id="helpDialog" class="help-dialog">
+    <form method="dialog">
+      <button class="dialog-close" value="close" aria-label="Close guide">×</button>
+      <span class="eyebrow dark">Prototype guide</span>
+      <h2>Use evidence in four steps</h2>
+      <ol class="guide-list">
+        <li><span>1</span><div><strong>Start with the overview</strong><p>Confirm the study scope and interpretation boundaries.</p></div></li>
+        <li><span>2</span><div><strong>Inspect network candidates</strong><p>Filter and select intermediaries for closer operational questions.</p></div></li>
+        <li><span>3</span><div><strong>Compare model evidence</strong><p>Switch metrics and review which features carry predictive information.</p></div></li>
+        <li><span>4</span><div><strong>Explore bounded scenarios</strong><p>Change assumptions, save comparisons and export a discussion record.</p></div></li>
+      </ol>
+      <div class="dialog-warning"><strong>Always retain the boundary:</strong> synthetic evidence supports requirements gathering and field-research design, not automated operational decisions.</div>
+      <button class="button primary full" value="close">Start exploring</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
